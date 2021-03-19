@@ -31,7 +31,7 @@ body{
 }
 
 .data{
-    margin-top: 5px;
+    margin: 5px;
     width:45%;
     height:45%;
     background-color: white;
@@ -67,3 +67,11 @@ button{
     outline-style: none;
     border-style: solid;
 }
+
+.selections{
+    margin-top:50px;
+    border-radius: 50px;
+    width: 30%;
+    outline-style: none;
+}
+
