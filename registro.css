@@ -33,7 +33,7 @@ body{
 .data{
     margin: 5px;
     width:45%;
-    height:45%;
+    height:50%;
     background-color: white;
     display: flex;
     flex-direction:column;
@@ -69,7 +69,7 @@ button{
 }
 
 .selections{
-    margin-top:50px;
+    margin-top:25px;
     border-radius: 50px;
     width: 30%;
     outline-style: none;
