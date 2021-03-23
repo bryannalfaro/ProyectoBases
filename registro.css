@@ -71,11 +71,14 @@ button{
 .selections{
     margin-top:25px;
     border-radius: 50px;
-    width: 30%;
+    width: 25%;
     outline-style: none;
 }
 
-#youtube-icon{
-    background-image: url('https://cdn.pixabay.com/photo/2019/08/11/18/27/icon-4399630_1280.png');
+.drop{
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
 }
-
