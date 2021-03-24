@@ -12,34 +12,72 @@
         <img src="logo.png" alt="logo" class="logo">
         <div class="data">
             <h1 class="name">Nombre:</h1>
-            <input type="text" class="input-name" placeholder="Nombre"/>
+            <input type="text" class="input-name" id="1" placeholder="Nombre"/>
             <h1 class="name">Edad:</h1>
-            <input type="text" class="input-name" placeholder="Edad"/>
+            <input type="text" class="input-name" id="2" placeholder="Edad"/>
             <h1 class="name">Pais:</h1>
-            <input type="text" class="input-name" placeholder="Pais"/>
+            <input type="text" class="input-name" id="3" placeholder="Pais"/>
             <h1 class="name">Contraseña:</h1>
-            <input type="password" class="input-name" placeholder="Contraseña"/>
+            <input type="password" class="input-name" id="4"placeholder="Contraseña"/>
             <div class="drop">
-                <select class="selections">
-                    <option>Manager</option>
-                    <option>Artista</option>
+                <select class="selections" id="select">
+                    <option>Administrador</option>
                     <option>Usuario</option>
                 </select>
-                <select class="selections">
-                    <option>Free</option>
-                    <option>Premium</option>
-                </select>
+
 
             </div>
 
 
         </div>
         <div class="buttons">
-            <a href="principal.html"><button class="ingresar" onclick="prueba()">Ingresar</button></a>
+            <button class="ingresar" onclick="dataUser()">Ingresar</button>
 
         </div>
 
     <div>
+
+        <script>
+            function dataUser(){
+                var userName = document.getElementById('1').value
+                console.log(userName)
+                var userAge = document.getElementById('2').value
+                console.log(userAge)
+                var userCountry = document.getElementById('3').value
+                console.log(userCountry)
+                var userPass = document.getElementById('4').value
+                console.log(userPass)
+                var userRole = document.getElementById('select').value
+                console.log(userRole)
+                if(userRole==="Administrador"){
+                    userRole = 'Si'
+                }else{
+                    userRole='No'
+                }
+                console.log(userRole)
+                fetch('http://localhost:3000/api/user/register/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: userName,
+                            contrasena: userPass,
+                            edad: userAge,
+                            pais: userCountry,
+                            premium:'No',
+                            administrador: userRole
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("userR", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("userR")));
+                    })
+            }
+
+
+        </script>
 
 
 </body>

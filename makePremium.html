@@ -16,12 +16,31 @@
             <li class="grey">Q80 / año</li>
             <li>Reproduccion ilimitada de canciones</li>
             <li>Crear playlist</li>
-            <li class="grey"><a href="#" class="button">Comprar</a></li>
+            <li class="grey"><a href="#" class="button" onclick="update()">Comprar</a></li>
             </ul>
       </div>
 
     </div>
+    <script>
+        function update(){
+            console.log("Entro")
+            /*
+            fetch('http://localhost:3000/api/user/sub/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario:
+                        })
 
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("userR", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("userR")));
+                    })*/
+        }
+    </script>
 
 
 </body>

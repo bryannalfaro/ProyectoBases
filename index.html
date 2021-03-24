@@ -12,30 +12,50 @@
         <img src="logo.png" alt="logo" class="logo">
         <div class="data">
             <h1 class="name">Nombre:</h1>
-            <input type="text" class="input-name" placeholder="Nombre"/>
+            <input type="text" class="input-name" id="input-name" placeholder="Nombre"/>
             <h1 class="name">Contraseña:</h1>
-            <input type="password" class="input-name" placeholder="Contraseña"/>
+            <input type="password" class="input-name" id="input-contra"placeholder="Contraseña"/>
 
         </div>
         <div class="buttons">
-            <a href="principal.html"><button class="ingresar" onclick="prueba()">Ingresar</button></a>
+            <a href="principal.html"><button class="ingresar" onclick="ingreso()" id="ingresar">Ingresar</button>
             <a href="registro.html"><button class="registro">Registrarse</button ></a>
         </div>
 
     <div>
 
     <script>
-        fetch('http://localhost:3000/api/user/login/', {
+
+
+
+
+        function ingreso(){
+            console.log("Entro")
+            var nameUser = document.getElementById('input-name').value;
+            console.log(nameUser)
+            var contraUser = document.getElementById('input-contra').value;
+            console.log(contraUser)
+            fetch('http://localhost:3000/api/user/login/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            nombre: "Bryann",
-                            contrasena: 321,
+                            nombre: nameUser,
+                            contrasena: contraUser,
                         })
 
-                    } ).then(response => response.json()).then(response => console.log(response))
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("user", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("user")));
+                    })
+
+
+
+
+        }
+
     </script>
 
 

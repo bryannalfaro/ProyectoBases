@@ -26,15 +26,71 @@
                 <input type="radio" name="usuario" id="artista">
                 <label for="artista">Artista</label>
 
-                <input type="text" class="nombre" style="margin: 40px;" placeholder="Escribe tu alias">
-                
+                <input type="text" class="nombre" style="margin: 40px;" placeholder="Escribe tu alias" id="nombre">
+
             </div>
             <div>
-                <a href="#" class="btn2" style="margin:5px">Guardar</a>
+                <a href="#" class="btn2" style="margin:5px" onclick="userRole()">Guardar</a>
             </div>
         </div>
 
-        
+
     </div>
+
+    <script>
+        function userRole(){
+            var userSelect = document.getElementById('artista').checked
+            console.log(userSelect)
+            var userSelect2 = document.getElementById('manager').checked
+            console.log(userSelect2)
+            var inputName = document.getElementById('nombre').value
+            console.log(inputName)
+
+            /*if(userSelect===true){
+                fetch('http://localhost:3000/api/user/postArtist/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: userName,
+                            contrasena: userPass,
+                            edad: userAge,
+                            pais: userCountry,
+                            premium:'No',
+                            administrador: userRole
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("userR", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("userR")));
+                    })
+
+            }else{
+
+                fetch('http://localhost:3000/api/user/postManager/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: userName,
+                            contrasena: userPass,
+                            edad: userAge,
+                            pais: userCountry,
+                            premium:'No',
+                            administrador: userRole
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("userR", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("userR")));
+                    })
+
+            }*/
+        }
+    </script>
 </body>
 </html>
