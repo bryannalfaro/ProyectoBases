@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" id='premD'>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Opciones premium
               </a>
@@ -29,7 +29,7 @@
                 <div class="dropdown-divider"></div>
               </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" id="art">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Opciones artista
               </a>
@@ -39,7 +39,7 @@
                 <div class="dropdown-divider"></div>
               </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" id="adm">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Opciones administrador
               </a>
@@ -61,8 +61,8 @@
           <div>
             <a href="playlists.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit">Playlist</button></a>
             <button class="btn btn-outline-success my-2 my-sm-0 1" type="submit" onclick="out()">Log out</button>
-            <a href="makePremium.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit">Hazte premium</button></a>
-            <a href="cambiar_rol.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit">Hazte manager o artista</button></a>
+            <a href="makePremium.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id="prem">Hazte premium</button></a>
+            <a href="cambiar_rol.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id='man'>Hazte manager o artista</button></a>
           </div>
 
 
@@ -108,17 +108,66 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script>
-        var f = new Date();
-        if (f.getMonth()<10){
-          document.write(f.getFullYear() + "-" + "0"+(f.getMonth() +1) + "-" + f.getDate());
-        }else{
-          document.write(f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate());
-        }
+
 
         function out(){
           window.localStorage.clear()
           location.href="index.html"
         }
+
+        console.log(JSON.parse(window.localStorage.getItem("user")))
+        var val = JSON.parse(window.localStorage.getItem("user"))[0].premium
+        if(val==='Si'){
+          console.log("prem")
+          document.getElementById('prem').style.display= 'none';
+
+        }else if(val==='No'){
+          console.log("no prem")
+          document.getElementById('premD').style.display='none';
+        }
+
+        var val2 = JSON.parse(window.localStorage.getItem("user"))[0].administrador
+        if(val2==='Si'){
+          console.log("adm")
+        }else if(val2==='No'| val2===null){
+          console.log("no prem")
+          document.getElementById('adm').style.display='none';
+        }
+
+        fetch('http://localhost:3000/api/user/probe/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        if(response.length===0){
+                            document.getElementById('art').style.display='none'
+                        }else if(response.length!=0){
+                          document.getElementById('man').style.display='none'
+                        }
+                    })
+                    fetch('http://localhost:3000/api/user/probeM/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        if(response.length===0){
+
+                        }else if(response.length!=0){
+                          document.getElementById('man').style.display='none'
+                        }
+                    })
 
 
 
