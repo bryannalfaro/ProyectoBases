@@ -24,12 +24,12 @@
             albumes = document.querySelector('.card2')
         fetch('http://localhost:3000/api/report/2').then(response => response.json()).then(response =>{
                 response.map((item)=>{
-                    console.log(item.nombre)
+                    console.log(item)
                     album = document.createElement('div')
                     var inner =  `
                     <br/>
-                    <div>Nombre${item.nombrealbum}</div>
-                    <div>Fecha: ${item.fecha}</div>
+                    <div>Nombre: ${item.nombre_artista}</div>
+                    <div>Crecimiento en escuchas: ${item.diferencia_de_escuchas}</div>
                     <br/>
                     `
                     album.innerHTML = inner

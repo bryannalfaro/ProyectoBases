@@ -33,3 +33,9 @@ html,body{
     display: flex;
     flex-direction: column;
 }
+
+.card4{
+    width: 100%;
+    overflow: scroll;
+}
+
