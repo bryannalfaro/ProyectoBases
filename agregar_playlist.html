@@ -26,7 +26,7 @@
                     <h3>Nombre usuario</h3>
                 </div>
                 <div>
-                    <input type="text" style="margin-bottom:40px;" placeholder="Nombre"/>
+                    <input type="text" style="margin-bottom:40px;" placeholder="Nombre" id='valP'/>
 
                 </div>
                 <div>
@@ -37,22 +37,26 @@
 
         <script>
             function createPlay(){
-                /*fetch('http://localhost:3000/api/playlist/', {
-                        method: 'PUT',
+                var f = new Date();
+         if (f.getMonth()<10){
+          var fecha = f.getFullYear() + "-" + "0"+(f.getMonth() +1) + "-" + f.getDate();
+         }else{
+          var fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
+            }
+                fetch('http://localhost:3000/api/playlist/', {
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            id_usuario:,
-                            nombre: ,
-                            fecha:
+                            id_usuario:JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+                            nombre: document.getElementsById('valP').value,
+                            fecha: fecha
                         })
 
                     } ).then(response => response.json()).then(response => {
                         console.log(response)
-                        window.localStorage.setItem("userR", JSON.stringify(response));
-                        console.log(JSON.parse(window.localStorage.getItem("userR")));
-                    })*/
+                    })
             }
         </script>
     </body>

@@ -21,6 +21,109 @@
 
     </div>
 
+    <script>
+        albumes = document.querySelector('.card1')
+        fetch('http://localhost:3000/api/report/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.nombre)
+                    album = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Nombre${item.nombrealbum}</div>
+                    <div>Fecha: ${item.fecha}</div>
+                    <br/>
+                    `
+                    album.innerHTML = inner
+                    albumes.append(album)
 
+                })
+            })
+
+            albumes = document.querySelector('.card2')
+        fetch('http://localhost:3000/api/report/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.nombre)
+                    album = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Nombre${item.nombrealbum}</div>
+                    <div>Fecha: ${item.fecha}</div>
+                    <br/>
+                    `
+                    album.innerHTML = inner
+                    albumes.append(album)
+
+                })
+            })
+
+            suscripciones = document.querySelector('.card3')
+        fetch('http://localhost:3000/api/report/3').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.nombre)
+                    sub = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Nombre${item.cantidad}</div>
+                    <div>Fecha: ${item.año}</div>
+                    <div>Fecha: ${item.mes}</div>
+                    <br/>
+                    `
+                    sub.innerHTML = inner
+                    suscripciones.append(sub)
+
+                })
+            })
+
+            albumes = document.querySelector('.card4')
+        fetch('http://localhost:3000/api/report/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.nombre)
+                    album = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Nombre${item.nombrealbum}</div>
+                    <div>Fecha: ${item.fecha}</div>
+                    <br/>
+                    `
+                    album.innerHTML = inner
+                    albumes.append(album)
+
+                })
+            })
+
+            albumes = document.querySelector('.card5')
+        fetch('http://localhost:3000/api/report/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.nombre)
+                    album = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Nombre${item.nombrealbum}</div>
+                    <div>Fecha: ${item.fecha}</div>
+                    <br/>
+                    `
+                    album.innerHTML = inner
+                    albumes.append(album)
+
+                })
+            })
+
+            albumes = document.querySelector('.card6')
+        fetch('http://localhost:3000/api/report/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.nombre)
+                    album = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Nombre${item.nombrealbum}</div>
+                    <div>Fecha: ${item.fecha}</div>
+                    <br/>
+                    `
+                    album.innerHTML = inner
+                    albumes.append(album)
+
+                })
+            })
+    </script>
 </body>
 </html>
