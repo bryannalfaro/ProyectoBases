@@ -7,8 +7,8 @@
         <link rel="stylesheet" type="text/css" href="agregar.css">
 
         <title>Agregar playlist</title>
-        
-        
+
+
 
     </head>
 
@@ -18,7 +18,7 @@
                 <div class="image-container">
                     <img src="logo.png"/>
                 </div>
-                
+
 
             </div>
             <div class="lower-container">
@@ -27,12 +27,33 @@
                 </div>
                 <div>
                     <input type="text" style="margin-bottom:40px;" placeholder="Nombre"/>
-                    
+
                 </div>
-                <div>   
-                    <a href="#" class="btn1" style="margin-bottom:20px;">Crear playlist</a>
+                <div>
+                    <a href="#" class="btn1" style="margin-bottom:20px;" onclick="createPlay()">Crear playlist</a>
                 </div>
             </div>
         </div>
+
+        <script>
+            function createPlay(){
+                /*fetch('http://localhost:3000/api/playlist/', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario:,
+                            nombre: ,
+                            fecha:
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("userR", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("userR")));
+                    })*/
+            }
+        </script>
     </body>
 </html>

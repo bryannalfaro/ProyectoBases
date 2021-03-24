@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>Modificar artistas</title>
-        
+
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" href="modificar_artista.css">
     </head>
     <body>
@@ -17,12 +17,12 @@
                 <div class="details" contenteditable="true">
                     <h3>Cage The Elephant</h3>
                     <h1>2,414,599</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>Cage the Elephant es un grupo estadounidense de indie rock y rock alternativo.</p>
                 </div>
-                <a href="#" style="margin: 0 30px 25px 250px" class="boton">Guardar</a>
+                <a href="#" style="margin: 0 30px 25px 250px" class="boton" onclick="modifyAlbum()">Guardar</a>
             </div>
 
 
@@ -32,7 +32,7 @@
                 </div>
                 <div class="details" contenteditable="true">
                     <h3>The Strokes</h3>
-                    <h1>3,636,571</h1>  
+                    <h1>3,636,571</h1>
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>The Strokes es una banda de rock originaria de Nueva York formada en 1998 por Julian Casablancas.</p>
@@ -48,7 +48,7 @@
                 <div class="details" contenteditable="true">
                     <h3>Phoebe Bridgers</h3>
                     <h1>608,827</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>Phoebe Lucille Bridgers es una música estadounidense de Los Angeles, California.</p>
@@ -63,7 +63,7 @@
                 <div class="details" contenteditable="true">
                     <h3>Alfie Templeman</h3>
                     <h1>74,270</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>Alfie George Templeman es un cantautor, multiinstrumentista y productor inglés.</p>
@@ -78,7 +78,7 @@
                 <div class="details" contenteditable="true">
                     <h3>The Cure</h3>
                     <h1>3,062,631</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>The Cure es una banda británica de rock formada en 1976 en Crawley.​</p>
@@ -93,7 +93,7 @@
                 <div class="details" contenteditable="true">
                     <h3>The Kooks</h3>
                     <h1>2,056,235</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>The Kooks es una banda de indie rock británica formada en Brighton, East Sussex, Inglaterra en 2004.</p>
@@ -108,7 +108,7 @@
                 <div class="details" contenteditable="true">
                     <h3>Eels</h3>
                     <h1>350,573</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>Eels es una banda de rock de Estados Unidos formada por el cantante y compositor Mark Oliver Everett</p>
@@ -123,7 +123,7 @@
                 <div class="details" contenteditable="true">
                     <h3>Alex Turner</h3>
                     <h1>515,956</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>Alexander David Turner ​ es un músico, compositor, cantante y productor discográfico británico.</p>
@@ -138,7 +138,7 @@
                 <div class="details" contenteditable="true">
                     <h3>Leon Larregui</h3>
                     <h1>1,454,026</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>León Larregui es mejor conocido como el carismático líder y guitarrista de la banda Zoe.</p>
@@ -152,14 +152,14 @@
                 </div>
                 <div class="details" contenteditable="true">
                     <h3>The Strokes</h3>
-                    <h1>3,636,571</h1>  
+                    <h1>3,636,571</h1>
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>The Strokes es una banda de rock originaria de Nueva York formada en 1998 por Julian Casablancas.</p>
                 </div>
                 <a href="#" style="margin: 0 30px 25px 250px" class="boton">Guardar</a>
             </div>
-            
+
             <div class="artista a2">
                 <div class="container">
                     <img src="3.png" alt="declan-McKenna">
@@ -167,7 +167,7 @@
                 <div class="details" contenteditable="true">
                     <h3>Declan McKenna</h3>
                     <h1>687,252</h1>
-                    
+
                 </div>
                 <div class="details2" contenteditable="true">
                     <p>Declan McKenna es un cantante, compositor y músico británico. </p>
@@ -175,7 +175,27 @@
                 <a href="#" style="margin: 0 30px 25px 250px" class="boton">Guardar</a>
             </div>
 
-            
+
         </div>
+        <script>
+            function modifyAlbum(){
+                /*fetch('http://localhost:3000/api/album/', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_album:,
+                            nombrealbum:,
+                            fecha:
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("userR", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("userR")));
+                    })*/
+            }
+        </script>
     </body>
 </html>

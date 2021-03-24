@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>Eliminar canciones</title>
-        
+
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="modificar_cancion.css">
     </head>
     <body>
@@ -16,14 +16,14 @@
                 <div class="details" >
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
                     <p>Nombre artista</p>
                 </div>
-                
-                <a href="#" style="margin: 0 30px 25px 250px" class="boton">Eliminar</a>
+
+                <a href="#" style="margin: 0 30px 25px 250px" class="boton" onclick="deleteSong()">Eliminar</a>
             </div>
 
             <div class="cancion c2">
@@ -33,7 +33,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2" >
                     <p>Nombre album</p>
@@ -49,7 +49,7 @@
                 <div class="details" >
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2" >
                     <p>Nombre album</p>
@@ -65,7 +65,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
@@ -81,7 +81,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
@@ -97,7 +97,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
@@ -113,7 +113,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
@@ -129,7 +129,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
@@ -145,7 +145,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
@@ -161,7 +161,7 @@
                 <div class="details">
                     <h3>Nombre cancion</h3>
                     <h1>Duracion</h1>
-                    
+
                 </div>
                 <div class="details2">
                     <p>Nombre album</p>
@@ -169,7 +169,25 @@
                 </div>
                 <a href="#" style="margin: 0 30px 25px 250px" class="boton">Eliminar</a>
             </div>
-            
+
         </div>
+        <script>
+            function deleteSong(){
+                /*fetch('http://localhost:3000/api/cancion/', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_cancion:
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        window.localStorage.setItem("userR", JSON.stringify(response));
+                        console.log(JSON.parse(window.localStorage.getItem("userR")));
+                    })*/
+            }
+        </script>
     </body>
 </html>
