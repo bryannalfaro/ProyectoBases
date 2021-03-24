@@ -1,27 +1,37 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Modificar playlistes</title>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="playlists.css">
+<head>
+    <title>Modificar playlistes</title>
 
-    </head>
-    <body>
-        <div class="playlists">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="playlists.css">
+
+</head>
+
+<body>
+    <div class="playlists">
 
 
-        </div>
+    </div>
 
-        <script>
-            const playlists = document.querySelector('.playlists')
-            fetch('http://localhost:3000/api/playlist/').then(response => response.json()).then(response =>{
-                response.map((item)=>{
-                    console.log(item.nombre)
-                    playlist = document.createElement('div')
-                    var inner =  `
+    <script>
+        const playlists = document.querySelector('.playlists')
+        fetch('http://localhost:3000/api/playlist/'{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+            })
+
+        }).then(response => response.json()).then(response => {
+            response.map((item) => {
+                console.log(item.nombre)
+                playlist = document.createElement('div')
+                var inner = `
                     <div class="playlist pl1">
                 <div class="container">
                     <img src="logo.png" >
@@ -32,9 +42,12 @@
                 </div>
                 <a href="escuchar_playlist.html" style="margin: 0 30px 25px 250px" class="boton">Ver</a>
                     `
-                    playlist.innerHTML = inner
-                    playlists.append(playlist)})})
+                playlist.innerHTML = inner
+                playlists.append(playlist)
+            })
+        })
 
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
