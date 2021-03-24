@@ -11,22 +11,24 @@
         <div class="title">Reportes</div>
 
         <div class="report">
-                <div class="card1">Albumes mas recientes</div>
 
+                <div class="card6">Usuarios mas activos en la plataforma</div>
         </div>
 
     </div>
 
     <script>
-        albumes = document.querySelector('.card1')
-        fetch('http://localhost:3000/api/report/1').then(response => response.json()).then(response =>{
+
+
+            albumes = document.querySelector('.card6')
+        fetch('http://localhost:3000/api/report/6').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre)
                     album = document.createElement('div')
                     var inner =  `
                     <br/>
-                    <div>Nombre${item.nombrealbum}</div>
-                    <div>Fecha: ${item.fecha}</div>
+                    <div>Nombre: ${item.nombre}</div>
+                    <div>Cantidad escuchada: ${item.suma}</div>
                     <br/>
                     `
                     album.innerHTML = inner
@@ -34,7 +36,6 @@
 
                 })
             })
-
     </script>
 </body>
 </html>
