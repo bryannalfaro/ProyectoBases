@@ -16,17 +16,20 @@ body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 
 }
-.canciones{
+.playlists{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
     padding: 20px;
     grid-gap: 40px;
 
+
 }
-.cancion{
-    background-color: #fff;
+.playlist{
+    background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0px 1px 10px 1px #000;
+    
+
 }
 .container{
     position: relative;
@@ -50,11 +53,6 @@ img{
 }
 .details{
     padding: 20px 25px;
-    display: flex;
-}
-.details2{
-    padding: 0px 25px;
-
 }
 .details>h3{
     color: rgb(0, 0, 0);
@@ -62,19 +60,11 @@ img{
     font-size: 18px;
     margin: 10px 0 15px 0;
 }
-.details>h1{
-    color: rgb(0, 0, 0);
-    font-weight: 600;
-    font-size: 18px;
-    margin: 10px 0 15px 0;
-    padding-left:170px;
-}
-.details2>p{
+.details>p{
     color: #a0a0a0;
     font-size: 15px;
     line-height: 30px;
     font-weight: 400;
-    
 }
 
 .boton {
@@ -96,7 +86,6 @@ img{
    
     border: none;
     text-decoration: none;
-    
     
 }
 

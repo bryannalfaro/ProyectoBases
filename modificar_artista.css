@@ -24,18 +24,21 @@ body{
 
 }
 .artista{
-    background-color: #000000;
+    background-color: #fff;
     border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.18);
+    box-shadow: 0px 1px 10px 1px #000;
+    
 }
 .container{
     position: relative;
+    
     
 }
 img{ 
     width: 100%;
     display: block;
     border-radius: 20px 20px 0 0;
+    
 }
 .container:after{
     content: "";
@@ -46,24 +49,28 @@ img{
     left: 0;
     border-radius: 20px 20px 0 0;
     opacity: 0.7;
+    
 
 }
 .details{
     padding: 20px 25px;
     display: flex;
+    
 }
 .details2{
     padding: 0px 25px;
+    margin-bottom: 30px;
 
 }
+
 .details>h3{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-weight: 600;
     font-size: 18px;
     margin: 10px 0 15px 0;
 }
 .details>h1{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-weight: 600;
     font-size: 18px;
     margin: 10px 0 15px 0;
@@ -78,6 +85,7 @@ img{
 }
 
 .boton {
+    background-color:  #0100ec;
     color: rgb(255, 255, 255);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 100;
@@ -91,6 +99,11 @@ img{
     display:grid;
     place-items: center center;
     margin: auto;
+
+   
+    border: none;
+    text-decoration: none;
+    
     
 }
 

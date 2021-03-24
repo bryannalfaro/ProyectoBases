@@ -28,8 +28,10 @@ body{
 }
 
 .upper-container{
-    height: 150px;
+    height: 200px;
     background: #000;
+    margin-bottom: -15px;
+    
 }
 
 .image-container{
@@ -38,7 +40,8 @@ body{
     height: 200px;
     border-radius: 50%;
     padding: 5px;
-    transform: translate(150px, 50px);
+    transform: translate(150px, 90px);
+    
 }
 
 .image-container img{ 
@@ -46,6 +49,7 @@ body{
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    
 }
 .lower-container{
     height: 280px;
@@ -53,6 +57,8 @@ body{
     padding: 20px;
     padding-top: 120px;
     text-align: center;
+    
+    
 
 }
 
@@ -61,6 +67,7 @@ body{
     box-sizing: border-box;
     line-height: .6;
     font-weight: bolder;
+    margin-bottom: 40px;
 }
 
 .lower-container h4{
@@ -72,12 +79,9 @@ body{
 .lower-container p{
     font-size: 16px;
     color: gray;
-    margin-bottom: 30px;
+    
 }
-.lower-container .btn1, .btn2{
-    padding: 20px 25px;
-    display: inline-block; 
-}
+
 .lower-container .btn1{
     padding: 12px 20px;
     background: #0100ec;
@@ -115,4 +119,23 @@ body{
         #fb36f4
     );
     color: #fff;
+}
+
+input {
+    border: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    width: 300px;
+    outline: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+input::placeholder{
+    color: rgb(150, 150, 150);
+    transition: color 0.3s ease;
 }

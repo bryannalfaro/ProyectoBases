@@ -1,10 +1,10 @@
 body{
     background-image: linear-gradient(
         135deg,
-        #0100ec,
+        #0100ec, 
         #fb36f4
     );
-
+    
     display: grid;
     place-items: center center;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -21,15 +21,17 @@ body{
     transform: translate(-50%, -50%);
     box-shadow: 0px 1px 10px 1px #000;
 
-
+    
 
     overflow: hidden;
     display: inline-block;
 }
 
 .upper-container{
-    height: 150px;
+    height: 200px;
     background: #000;
+    margin-bottom: -15px;
+    
 }
 
 .image-container{
@@ -38,14 +40,16 @@ body{
     height: 200px;
     border-radius: 50%;
     padding: 5px;
-    transform: translate(150px, 50px);
+    transform: translate(150px, 90px);
+    
 }
 
-.image-container img{
-
+.image-container img{ 
+    
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    
 }
 .lower-container{
     height: 280px;
@@ -53,14 +57,17 @@ body{
     padding: 20px;
     padding-top: 120px;
     text-align: center;
+    
+    
 
 }
 
 .lower-container h3, h4{
-
+    
     box-sizing: border-box;
     line-height: .6;
     font-weight: bolder;
+    margin-bottom: 40px;
 }
 
 .lower-container h4{
@@ -72,12 +79,9 @@ body{
 .lower-container p{
     font-size: 16px;
     color: gray;
-    margin-bottom: 30px;
+    
 }
-.lower-container .btn1, .btn2{
-    padding: 20px 25px;
-    display: inline-block;
-}
+
 .lower-container .btn1{
     padding: 12px 20px;
     background: #0100ec;
@@ -102,7 +106,7 @@ body{
 .lower-container .btn1:hover{
     background-image: linear-gradient(
         135deg,
-        #0100ec,
+        #0100ec, 
         #fb36f4
     );
     color: #fff;
@@ -111,24 +115,50 @@ body{
 .lower-container .btn2:hover{
     background-image: linear-gradient(
         135deg,
-        #0100ec,
+        #0100ec, 
         #fb36f4
     );
     color: #fff;
 }
 
-.input{
-    margin-top: 50px;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+input[type="text"]{
+    border: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    width: 300px;
+    font-size: 13px;
+    outline: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+input::placeholder{
+    color: rgb(150, 150, 150);
+    transition: color 0.3s ease;
+}
+
+input[type="radio"] {
+    display: none;
+}
+label{
+    position: relative;
+    color: #0100ec;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    border: 2px solid #0100ec;
+    border-radius: 5px; 
+    padding: 10px 30px;
+    margin: 5px;
     align-items: center;
+    
 
 }
 
-.nombre {
-    border-style: solid;
-    border-radius: 50px;
-    outline:none;
+input[type="radio"]:checked + label{
+    background-color: #0100ec;
+    color: white;
 }
