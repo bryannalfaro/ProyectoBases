@@ -70,9 +70,16 @@
                         })
 
                     } ).then(response => response.json()).then(response => {
+                        if(response.length===0){
+
+                        }else{
                         console.log(response)
                         window.localStorage.setItem("userR", JSON.stringify(response));
                         console.log(JSON.parse(window.localStorage.getItem("userR")));
+                        location.href="principal.html"
+                        }
+
+
                     })
             }
 

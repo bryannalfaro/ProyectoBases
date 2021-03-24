@@ -18,7 +18,7 @@
 
         </div>
         <div class="buttons">
-            <a href="principal.html"><button class="ingresar" onclick="ingreso()" id="ingresar">Ingresar</button>
+           <button class="ingresar" onclick="ingreso()" id="ingresar">Ingresar</button>
             <a href="registro.html"><button class="registro">Registrarse</button ></a>
         </div>
 
@@ -46,9 +46,16 @@
                         })
 
                     } ).then(response => response.json()).then(response => {
-                        console.log(response)
-                        window.localStorage.setItem("user", JSON.stringify(response));
-                        console.log(JSON.parse(window.localStorage.getItem("user")));
+                        if(response.length===0){
+                            console.log('vacion')
+                        }else{
+                            location.href="principal.html"
+                            window.localStorage.setItem("user", JSON.stringify(response));
+                            console.log(JSON.parse(window.localStorage.getItem("user")));
+                            console.log(response)
+                        }
+
+
                     })
 
 

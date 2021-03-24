@@ -60,7 +60,7 @@
 
           <div>
             <a href="playlists.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit">Playlist</button></a>
-            <button class="btn btn-outline-success my-2 my-sm-0 1" type="submit">Log out</button>
+            <button class="btn btn-outline-success my-2 my-sm-0 1" type="submit" onclick="out()">Log out</button>
             <a href="makePremium.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit">Hazte premium</button></a>
             <a href="cambiar_rol.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit">Hazte manager o artista</button></a>
           </div>
@@ -113,6 +113,11 @@
           document.write(f.getFullYear() + "-" + "0"+(f.getMonth() +1) + "-" + f.getDate());
         }else{
           document.write(f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate());
+        }
+
+        function out(){
+          window.localStorage.clear()
+          location.href="index.html"
         }
 
 
