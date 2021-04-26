@@ -22,6 +22,12 @@
          }else{
           var fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
             }
+
+      const addPlaylist =  (id)=> {
+        console.log(id)
+        window.localStorage.setItem('idcancion', id);
+        location.href ="playlists.html"
+      }
       //Para traer la cancion seleccionada
       const hey = (item) =>{
         window.localStorage.setItem('idval', item);
@@ -95,6 +101,7 @@
                             <p class="card-text">${response[0].artista}</p>
                             <p class="card-text">${response[0].album}</p>
                             <a   id = "${response[0].id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+                            <a   id = "${response[0].id_cancion}" class="btn btn-primary" onClick ="addPlaylist(this.id)">Agregar a playlist</a>
 
                           </div></div>
                             `
@@ -128,6 +135,7 @@
                             <p class="card-text">${item.artista}</p>
                             <p class="card-text">${item.album}</p>
                             <a   id = "${item.id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+                            <a   id = "${item.id_cancion}" class="btn btn-primary" onClick ="addPlaylist(this.id)">Agregar a playlist</a>
 
                           </div></div>
                             `
@@ -162,6 +170,7 @@
                             <p class="card-text">${item.artista}</p>
                             <p class="card-text">${item.album}</p>
                             <a  id = "${item.id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+                            <a   id = "${item.id_cancion}" class="btn btn-primary" onClick ="addPlaylist(this.id)">Agregar a playlist</a>
 
                           </div></div>
                             `
@@ -197,6 +206,7 @@
                             <p class="card-text">${item.artista}</p>
                             <p class="card-text">${item.album}</p>
                             <a  id = "${item.id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+                            <a   id = "${item.id_cancion}" class="btn btn-primary" onClick ="addPlaylist(this.id)">Agregar a playlist</a>
 
                           </div></div>
                             `

@@ -17,6 +17,25 @@
     </div>
 
     <script>
+
+        const hey = (item) => {
+            window.localStorage.setItem('idplay', item);
+        }
+
+        const addSong = (idPlaylist) =>{
+            fetch('http://localhost:3000/api/playlist/contiene/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id_cancion: JSON.parse(window.localStorage.getItem("idcancion")),
+                id_playlist: JSON.parse(idPlaylist)
+            })
+
+        })
+
+        }
         const playlists = document.querySelector('.playlists')
         fetch('http://localhost:3000/api/playlist/get/', {
             method: 'POST',
@@ -40,7 +59,8 @@
                     <h3>${item.nombre}</h3>
                     <p>${item.fecha}</p>
                 </div>
-                <a href="escuchar_playlist.html" style="margin: 0 30px 25px 250px" class="boton">Ver</a>
+                <a href="escuchar_playlist.html" id = "${item.id_playlist}" style="margin: 0 30px 25px 250px" onclick="hey(this.id)" class="boton">Ver</a>
+                <a id = "${item.id_playlist}" style="margin: 0 30px 25px 250px" onclick="addSong(this.id)" class="boton">Agregar</a>
                     `
                 playlist.innerHTML = inner
                 playlists.append(playlist)

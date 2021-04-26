@@ -7,9 +7,48 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="padre">
-        <iframe src="https://open.spotify.com/embed/playlist/10RLVUHxc4D47fE6HVncUS" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <div>
+        <div class="padre">
+        </div>
     </div>
 
+<script>
+    const hey = (item) => {
+        window.localStorage.setItem('idval', item);
+        location.href = 'escuchar_cancion.html'
+    }
+    const songs = document.querySelector('.padre')
+    console.log('Cancion')
+        fetch('http://localhost:3000/api/playlist/get/search', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_playlist: (window.localStorage.getItem("idplay"))
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        response.map((item)=>{
+                          song = document.createElement('div')
+                        var inner = `
+                        <div class="card" style="width: 18rem;">
+                          <img class="card-img-top" src="logo.png" alt="Card image cap" width="100%" height='100%'>
+
+                          <div class="card-body">
+                            <h5 class="card-title">${item.nombre}</h5>
+                            <p class="card-text">${item.duracion}</p>
+                            <p class="card-text">${item.artista}</p>
+                            <p class="card-text">${item.album}</p>
+                            <a   id = "${item.id_cancion}" class="btn btn-primary" onClick ="hey(this.id)" style="cursor:pointer">Escuchar</a>
+
+                          </div></div>
+                            `
+                        song.innerHTML = inner
+                        songs.append(song)
+                        })
+                    })
+</script>
 </body>
 </html>
