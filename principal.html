@@ -85,10 +85,10 @@
             <img class="im" src="logo.png" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="im" src="logo.png" alt="Second slide">
+            <img class="im" src="carousel2.jpg" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="im" src="logo.png" alt="Third slide">
+            <img class="im" src="carousel3.jpg" alt="Third slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
@@ -101,9 +101,18 @@
         </a>
       </div>
 
-      <form class="form-inline my-2 my-lg-0" id=f>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <a href="lista.html"><button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button></a>
+      <form class="form-inline my-2 my-lg-0" id=f >
+        <div class="btn-group" style="margin-right: 10px;">
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>Buscar por</option>
+            <option >Cancion</option>
+            <option >Genero</option>
+            <option >Artista</option>
+            <option >Album</option>
+          </select>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="inputsong">
+            <a href="lista.html"><button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="select()">Search</button></a>
+
           </form>
 
 
@@ -114,11 +123,20 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script>
 
-
+        //Al hacer log out
         function out(){
           window.localStorage.clear()
           location.href="index.html"
         }
+        //Guardar en local el valor seleccionado del dropdown en search
+        function select(){
+          console.log(document.getElementById("inlineFormCustomSelect").value)
+
+          window.localStorage.setItem('seleccion',document.getElementById("inlineFormCustomSelect").value)
+          window.localStorage.setItem('searching',document.getElementById("inputsong").value)
+          document.getElementById("inputsong").value = ''
+        }
+
 
         console.log(JSON.parse(window.localStorage.getItem("user")))
         var val = JSON.parse(window.localStorage.getItem("user"))[0].premium

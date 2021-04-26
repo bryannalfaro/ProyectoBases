@@ -14,6 +14,7 @@
         </div>
         <script>
             const canciones = document.querySelector('.canciones')
+            contador =1
             fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre)
@@ -32,28 +33,29 @@
                     <p>${item.album}</p>
                     <p>${item.artista}</p>
                 </div>
-                <a href="#" style="margin: 0 30px 20px 250px" class="boton" onclick="deleteSong()">Eliminar</a>
+                <a id = ${contador} href="#" style="margin: 0 30px 20px 250px" class="boton" onclick="deleteSong(this.id)">Eliminar</a>
                     `
+                    contador++;
                     cancion.innerHTML = inner
                     canciones.append(cancion)
 
                 })
             })
-            function deleteSong(){
-                /*fetch('http://localhost:3000/api/cancion/', {
+            function deleteSong(item){
+                console.log(item)
+                window.localStorage.setItem('idval2', item);
+                fetch('http://localhost:3000/api/cancion/del', {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            id_cancion:
+                            id_cancion: parseInt(window.localStorage.getItem('idval2')),
                         })
 
                     } ).then(response => response.json()).then(response => {
                         console.log(response)
-                        window.localStorage.setItem("userR", JSON.stringify(response));
-                        console.log(JSON.parse(window.localStorage.getItem("userR")));
-                    })*/
+                    })
             }
         </script>
     </body>

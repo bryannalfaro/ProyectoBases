@@ -9,79 +9,205 @@
 </head>
 <body>
     <div>
-        <H1>Canciones</H1>
+        <H1 id="titlemain"></H1>
         <div class="general">
-        <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                <div class="card-body">
-                  <h5 class="card-title">Card titlesss</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="escuchar_cancion.html" class="btn btn-primary">Go somewhere</a>
-                </div></div>
-            <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div></div>
-            <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div></div>
-            <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div></div>
-            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div></div>
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div></div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                                        <div class="card-body">
-                                          <h5 class="card-title">Card title</h5>
-                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                                        </div></div>
-
-                                        <div class="card" style="width: 18rem;">
-                                            <img class="card-img-top" src="logo.png" alt="Card image cap">
-
-                                            <div class="card-body">
-                                              <h5 class="card-title">Card title</h5>
-                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div></div>
-
         </div>
-
-
-          </div>
     </div>
+    <script>
+      console.log(window.localStorage.getItem('seleccion'))
+      console.log(window.localStorage.getItem('searching'))
+      var f = new Date();
+         if (f.getMonth()<10){
+          var fecha = f.getFullYear() + "-" + "0"+(f.getMonth() +1) + "-" + f.getDate();
+         }else{
+          var fecha = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
+            }
+      //Para traer la cancion seleccionada
+      const hey = (item) =>{
+        window.localStorage.setItem('idval', item);
+        var val = JSON.parse(window.localStorage.getItem("user"))[0].premium
+        if(val==='No'){
+          console.log("entree")
+          fetch('http://localhost:3000/api/user/streams/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+                            fecha:fecha
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log('R',response[0].count)
+                        if(response[0].count>='3'){
+
+                          alert('Ya no puedes escuchar mas canciones')
+                        }else{
+                          fetch('http://localhost:3000/api/stream/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_cancion: window.localStorage.getItem('idval'),
+                            id_usuario:JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+                            fecha:fecha
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+
+                    })
+                    location.href = 'escuchar_cancion.html'
+                        }
+
+                    })
+        }else{
+          location.href='escuchar_cancion.html'
+        }
+      }
+      const songs = document.querySelector('.general')
+
+      if(window.localStorage.getItem('seleccion')==='Cancion'){
+
+        console.log('Cancion')
+        document.getElementById('titlemain').textContent =('Canciones')
+        fetch('http://localhost:3000/api/cancion/getsong', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: (window.localStorage.getItem("searching"))
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        song = document.createElement('div')
+                        var inner = `
+                        <div class="card" style="width: 18rem;">
+                          <img class="card-img-top" src="logo.png" alt="Card image cap">
+
+                          <div class="card-body">
+                            <h5 class="card-title">${response[0].nombre}</h5>
+                            <p class="card-text">${response[0].duracion}</p>
+                            <p class="card-text">${response[0].artista}</p>
+                            <p class="card-text">${response[0].album}</p>
+                            <a   id = "${response[0].id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+
+                          </div></div>
+                            `
+                        song.innerHTML = inner
+                        songs.append(song)
+                    })
+
+      } else if(window.localStorage.getItem('seleccion')==='Artista'){
+        console.log('Artista')
+        document.getElementById('titlemain').textContent =('Canciones del artista '+`${(window.localStorage.getItem('searching'))}`)
+        fetch('http://localhost:3000/api/artist/getartist', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: (window.localStorage.getItem("searching"))
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        response.map((item)=>{
+                          song = document.createElement('div')
+                        var inner = `
+                        <div class="card" style="width: 18rem;">
+                          <img class="card-img-top" src="logo.png" alt="Card image cap">
+
+                          <div class="card-body">
+                            <h5 class="card-title">${item.nombre}</h5>
+                            <p class="card-text">${item.duracion}</p>
+                            <p class="card-text">${item.artista}</p>
+                            <p class="card-text">${item.album}</p>
+                            <a   id = "${item.id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+
+                          </div></div>
+                            `
+                        song.innerHTML = inner
+                        songs.append(song)
+                        })
+
+                    })
+      }else if(window.localStorage.getItem('seleccion')==='Album'){
+        console.log('Album')
+        document.getElementById('titlemain').textContent =('Canciones del album '+`${(window.localStorage.getItem('searching'))}`)
+        fetch('http://localhost:3000/api/album/getalbum', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: (window.localStorage.getItem("searching"))
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        response.map((item)=>{
+                          song = document.createElement('div')
+                        var inner = `
+                        <div class="card" style="width: 18rem;">
+                          <img class="card-img-top" src="logo.png" alt="Card image cap">
+
+                          <div class="card-body">
+                            <h5 class="card-title">${item.nombre}</h5>
+                            <p class="card-text">${item.duracion}</p>
+                            <p class="card-text">${item.artista}</p>
+                            <p class="card-text">${item.album}</p>
+                            <a  id = "${item.id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+
+                          </div></div>
+                            `
+                        song.innerHTML = inner
+                        songs.append(song)
+                        })
+
+                    })
+      }
+      else if(window.localStorage.getItem('seleccion')==='Genero'){
+        console.log('Genero')
+        document.getElementById('titlemain').textContent =('Canciones del genero '+`${(window.localStorage.getItem('searching'))}`)
+        fetch('http://localhost:3000/api/genero/name', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre: (window.localStorage.getItem("searching"))
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        response.map((item)=>{
+                          song = document.createElement('div')
+                        var inner = `
+                        <div class="card" style="width: 18rem;">
+                          <img class="card-img-top" src="logo.png" alt="Card image cap">
+
+                          <div class="card-body">
+                            <h5 class="card-title">${item.nombre}</h5>
+                            <p class="card-text">${item.duracion}</p>
+                            <p class="card-text">${item.artista}</p>
+                            <p class="card-text">${item.album}</p>
+                            <a  id = "${item.id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+
+                          </div></div>
+                            `
+                        song.innerHTML = inner
+                        songs.append(song)
+                        })
+
+                    })
+      }
+
+  </script>
 
 
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
