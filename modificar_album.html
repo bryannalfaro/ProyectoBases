@@ -26,36 +26,39 @@
                     <img src="10.png" alt="cage_the_elephant">
                 </div>
                 <div class="details" contenteditable="true">
-                    <h3>${item.nombrealbum}</h3>
-                    <h1>${item.fecha}</h1>
+                    <h3 id=${'nombre'+item.id_album}>${item.nombrealbum}</h3>
+                    <h1 id = ${'fecha'+item.id_album}>${item.fecha}</h1>
 
                 </div>
 
-                <a href="#" style="margin: 0 30px 25px 250px" class="boton" onclick="modifyAlbum()">Guardar</a>
+                <a id= ${item.id_album} style="margin: 0 30px 25px 250px" class="boton" onclick="modifyAlbums(this.id,document.getElementById('nombre'+this.id).textContent,document.getElementById('fecha'+this.id).textContent)">Guardar</a>
             </div>
                     `
                     album.innerHTML = inner
                     albums.append(album)
 
                 })
-            function modifyAlbum(){
-                /*fetch('http://localhost:3000/api/album/', {
+            })
+            function modifyAlbums(id,nombre,fecha){
+                console.log(nombre)
+                console.log(fecha)
+                fetch('http://localhost:3000/api/album/', {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            id_album:,
-                            nombrealbum:,
-                            fecha:
+                            id_album:id,
+                            nombrealbum:nombre,
+                            fecha: fecha
                         })
 
                     } ).then(response => response.json()).then(response => {
                         console.log(response)
                         window.localStorage.setItem("userR", JSON.stringify(response));
                         console.log(JSON.parse(window.localStorage.getItem("userR")));
-                    })*/
-            }})
+                    })
+            }
         </script>
     </body>
 </html>

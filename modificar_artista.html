@@ -19,6 +19,7 @@
             fetch('http://localhost:3000/api/artist/').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre_artista)
+                    console.log(item.descripcion)
                     artista = document.createElement('div')
                     var inner =  `
                     <div class="artista a9">
@@ -26,39 +27,44 @@
                     <img src="10.png" alt="cage_the_elephant">
                 </div>
                 <div class="details" contenteditable="true">
-                    <h3>${item.nombre_artista}</h3>
-                    <h1>${item.fans}</h1>
+                    <h3 id=${'artista'+item.id_artista}>${item.nombre_artista}</h3>
+                    <h1 id=${'fans'+item.id_artista}>${item.fans}</h1>
 
                 </div>
                 <div class="details2" contenteditable="true">
-                    <p>${item.descripcion}</p>
+                    <p id=${'desc'+item.id_artista}>${item.descripcion}</p>
                 </div>
-                <a href="#" style="margin: 0 30px 25px 250px" class="boton" onclick="modifyArtist()">Guardar</a>
+                <a id = ${item.id_artista} style="margin: 0 30px 25px 250px" class="boton" onclick="modifyArtist(this.id, document.getElementById('artista'+this.id).textContent,document.getElementById('fans'+this.id).textContent, document.getElementById('desc'+this.id).textContent)">Guardar</a>
             </div>
                     `
                     artista.innerHTML = inner
                     artistas.append(artista)
 
                 })
-            function modifyArtist(){
-                /*fetch('http://localhost:3000/api/artist/', {
+            })
+            function modifyArtist(id, nombre, fans, descripcion){
+                console.log(id)
+                console.log(nombre)
+                console.log(descripcion)
+                console.log(fans)
+                fetch('http://localhost:3000/api/artist/', {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            id_artista:,
-                            nombre_artista:,
-                            descripcion:,
-                            id_manager:
+                            nombre_artista: nombre,
+                            descripcion: descripcion,
+                            fans: fans,
+                            id_artista: id
                         })
 
                     } ).then(response => response.json()).then(response => {
                         console.log(response)
                         window.localStorage.setItem("userR", JSON.stringify(response));
                         console.log(JSON.parse(window.localStorage.getItem("userR")));
-                    })*/
-            }})
+                    })
+            }
         </script>
     </body>
 </html>
