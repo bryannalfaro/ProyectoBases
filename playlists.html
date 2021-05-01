@@ -19,10 +19,13 @@
     <script>
 
         const hey = (item) => {
+            console.log('agregado',item)
             window.localStorage.setItem('idplay', item);
         }
 
         const addSong = (idPlaylist) =>{
+            console.log('id plat',idPlaylist)
+            console.log(window.localStorage.getItem('idcancion'))
             fetch('http://localhost:3000/api/playlist/contiene/', {
             method: 'POST',
             headers: {
@@ -49,6 +52,7 @@
         }).then(response => response.json()).then(response => {
             response.map((item) => {
                 console.log(item.nombre)
+                console.log(item.id_playlist)
                 playlist = document.createElement('div')
                 var inner = `
                     <div class="playlist pl1">
