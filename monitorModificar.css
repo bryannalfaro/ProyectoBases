@@ -1,0 +1,19 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    cursor: pointer;
+    background-color: rgb(26, 26, 139);
+    border-radius: 15px;
+    width:350px;
+    color: white;
+    border-style: none;
+    margin-bottom: 25px;
+    padding: 25px;
+}
