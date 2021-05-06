@@ -44,7 +44,7 @@
 
                     } ).then(response => response.json()).then(response => {
                         if(response.length===0){
-                            console.log('vacion')
+                            console.log('vacio')
                         }else{
                             location.href="principal.html"
                             window.localStorage.setItem("user", JSON.stringify(response));

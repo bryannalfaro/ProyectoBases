@@ -1,80 +1,150 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
 
-        <title>Perfil usuario</title>
-        <Link rel="stylesheet" href="crearMonitor.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Perfil usuario</title>
+  <Link rel="stylesheet" href="crearMonitor.css">
 
 
-    </head>
+</head>
 
-    <body>
-        <div class="card-container">
+<body>
+  <div class="card-container">
 
-            <div class="lower-container">
-                <div>
-                    <h3>Monitor</h3>
-                </div>
-                <div >
-                    <form class="form-inline my-2 my-lg-0" id=f >
-                        <div class="btn-group" style="margin-right: 10px; margin-top: 25px;">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Insert type of monitor" aria-label="Search" id="inputsong">
+    <div class="lower-container">
+      <div>
+        <h3>Monitor</h3>
+      </div>
+      <div>
+        <form class="form-inline my-2 my-lg-0" id=f>
+          <div class="btn-group" style="margin-right: 10px; margin-top: 25px;">
+            <input class="form-control mr-sm-2" type="search" placeholder="Insert type of monitor" aria-label="Search"
+              id="inputType">
 
-                    </form>
+        </form>
 
-                </div>
-                <div class="container">
-                      <div class="form-check">
-                        <label class="form-check-label" for="check1">
-                          <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>Modificar informacion de track y album
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label" for="check2">
-                          <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">Desactivar tracks y albums
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" id="check3" name="option3">Desactivar usuarios registrados como artistas
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label" for="check1">
-                          <input type="checkbox" class="form-check-input" id="check4" name="option4" value="something" checked>Eliminar suscripciones de usuarios
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label" for="check1">
-                          <input type="checkbox" class="form-check-input" id="check5" name="option5" value="something" checked>Desactivar usuarios registrados como artistas
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label" for="check1">
-                          <input type="checkbox" class="form-check-input" id="check6" name="option6" value="something" checked>Asociar un usuario existente a un perfil de monitoreo
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label" for="check1">
-                          <input type="checkbox" class="form-check-input" id="check7" name="option7" value="something" checked>Generar los reportes ofrecidos por la plataforma
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <label class="form-check-label" for="check1">
-                          <input type="checkbox" class="form-check-input" id="check8" name="option8" value="something" checked>Consulta de bitacora de operaciones
-                        </label>
-                      </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-            </div>
-            </div>
+      </div>
+      <div class="container">
+        <div class="form-check">
+          <label class="form-check-label" for="check1">
+            <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something">Modificar
+            informacion de track y album
+          </label>
         </div>
-    </body>
+        <div class="form-check">
+          <label class="form-check-label" for="check2">
+            <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">Desactivar
+            tracks y albums
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="check3">
+            <input type="checkbox" class="form-check-input" id="check3" name="option3">Desactivar usuarios registrados
+            como artistas
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="check4">
+            <input type="checkbox" class="form-check-input" id="check4" name="option4" value="something">Eliminar
+            suscripciones de usuarios
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="check5">
+            <input type="checkbox" class="form-check-input" id="check5" name="option5" value="something">Desactivar
+            usuarios registrados como artistas
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="check6">
+            <input type="checkbox" class="form-check-input" id="check6" name="option6" value="something">Asociar
+            un usuario existente a un perfil de monitoreo
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="check7">
+            <input type="checkbox" class="form-check-input" id="check7" name="option7" value="something">Generar
+            los reportes ofrecidos por la plataforma
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="check8">
+            <input type="checkbox" class="form-check-input" id="check8" name="option8" value="something">Consulta de
+            bitacora de operaciones
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary" onclick=submit()>Submit</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+
+    function submit() {
+      var typeInput = document.getElementById('inputType').value
+      var opciones = []
+      var opcionesConcat = ''
+      var check1 = document.getElementById('check1').checked
+      if (check1 === true) {
+        opciones.push('check1')
+      }
+      var check2 = document.getElementById('check2').checked
+      if (check2 === true) {
+        opciones.push('check2')
+      }
+      var check3 = document.getElementById('check3').checked
+      if (check3 === true) {
+        opciones.push('check3')
+      }
+      var check4 = document.getElementById('check4').checked
+      if (check4 === true) {
+        opciones.push('check4')
+      }
+      var check5 = document.getElementById('check5').checked
+      if (check5 === true) {
+        opciones.push('check5')
+      }
+      var check6 = document.getElementById('check6').checked
+      if (check6 === true) {
+        opciones.push('check6')
+      }
+      var check7 = document.getElementById('check7').checked
+      if (check7 === true) {
+        opciones.push('check7')
+      }
+      var check8 = document.getElementById('check8').checked
+      if (check8 === true) {
+        opciones.push('check8')
+      }
+      console.log(opciones.join(','))
+      console.log(typeInput)
+
+      fetch('http://localhost:3000/api/monitor/crear', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          tipo: typeInput,
+          opciones: opciones.join(',')
+        })
+        
+
+      }).then(response => response.json()).then(response => {
+        console.log(response)
+      })
+    }
+
+  </script>
+</body>
+
 </html>
