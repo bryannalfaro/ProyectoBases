@@ -67,14 +67,14 @@
                 Opciones monitor
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="monitorModificar.html">Modificar informacion de cancion y album</a>
-                <a class="dropdown-item" href="monitorDesactivar.html">Desactivar canciones y albums</a>
-                <a class="dropdown-item" href="desactivarSinSub.html">Desactivar usuarios sin suscripcion</a>
-                <a class="dropdown-item" href="eliminarSubUser.html">Eliminar suscripcion de usuario</a>
-                <a class="dropdown-item" href="desactivarArtista.html">Desactivar usuarios registrados como artistas</a>
-                <a class="dropdown-item" href="perfiles.html">Asociar usuario existente a un perfil de monitoreo</a>
-                <a class="dropdown-item" href="generarReportes.html">Generar reportes</a>
-                <a class="dropdown-item" href="bitacora.html">Consulta de bitacora de operaciones</a>
+                <a id="check1" class="option dropdown-item" href="monitorModificar.html">Modificar informacion de cancion y album</a>
+                <a id="check2" class="option dropdown-item" href="monitorDesactivar.html">Desactivar canciones y albums</a>
+                <a id="check3" class="option dropdown-item" href="desactivarSinSub.html">Desactivar usuarios sin suscripcion</a>
+                <a id="check4" class="option dropdown-item" href="eliminarSubUser.html">Eliminar suscripcion de usuario</a>
+                <a id="check5" class="option dropdown-item" href="desactivarArtista.html">Desactivar usuarios registrados como artistas</a>
+                <a id="check6" class="option dropdown-item" href="perfiles.html">Asociar usuario existente a un perfil de monitoreo</a>
+                <a id="check7" class="option dropdown-item" href="generarReportes.html">Generar reportes</a>
+                <a id="check8" class="option dropdown-item" href="bitacora.html">Consulta de bitacora de operaciones</a>
 
                 <div class="dropdown-divider"></div>
               </div>
@@ -141,6 +141,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script>
+
 
         //Al hacer log out
         function out(){
@@ -210,8 +211,46 @@
                           document.getElementById('man').style.display='none'
                         }
                     })
+                    fetch('http://localhost:3000/api/monitores/probeMonitor/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario
+                        })
 
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+                        //si no es monitor
+                        if(response.length===0){
+                          document.getElementById('monitor').style.display='none'
+                        }else if(response.length!=0){
+                          comprobarTareaMonitor()
+                        }
+                    })
 
+                    //comprueba que tareas puede hacer el monitor
+        function comprobarTareaMonitor(){
+          console.log(document.querySelectorAll('a.option').forEach(el => el.style.display='none'))
+          fetch('http://localhost:3000/api/monitores/getOptionsMonitor/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                         string = response[0].opciones
+                         arreglo = string.split(',')
+                         for (var i = 0; i < arreglo.length;i++){
+                           document.getElementById(arreglo[i]).style.display ='block'
+                         }
+
+                    })
+          }
 
       </script>
     </body>
