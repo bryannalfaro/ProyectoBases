@@ -29,10 +29,25 @@
                 </div>
 
                 <div>
-                    <a href="#" class="btn1" style="margin: 5px;">Guardar</a>
+                    <a href="principal.html" class="btn1" onclick=asignarUsuarioMonitor() style="margin: 5px;">Guardar</a>
                 </div>
 
             </div>
         </div>
+        <script>
+            const asignarUsuarioMonitor = () =>{
+                fetch('http://localhost:3000/api/monitor/asignar/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: window.localStorage.getItem('idusuariomonitor'),
+                            tipo: window.localStorage.getItem('idtipomonitor')
+                        })
+
+                    } )
+            }
+        </script>
     </body>
 </html>

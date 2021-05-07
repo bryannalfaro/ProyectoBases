@@ -12,7 +12,7 @@
     <div class="users"></div>
     <script>
         const users = document.querySelector('.users')
-        fetch('http://localhost:3000/api/user/getAllUsers', {
+        fetch('http://localhost:3000/api/monitores/', {
 
                     } ).then(response => response.json()).then(response => {
                         console.log(response)
@@ -23,14 +23,18 @@
                           <img class="card-img-top" src="logo.png" alt="Card image cap">
 
                           <div class="card-body">
-                            <h5 class="card-title">${item.nombre}</h5>
-                            <a href="perfiles.html"  id = "${item.id_usuario}" class="btn btn-primary">Seleccionar</a>
+                            <h5 class="card-title">${item.tipo}</h5>
+                            <a href="perfiles.html"  onclick="asignarIDTipo(this.id)" id = "${item.tipo}" class="btn btn-primary">Seleccionar</a>
                           </div></div>
                             `
                         user.innerHTML = inner
                         users.append(user)
                         })
                     })
+
+        const asignarIDTipo = (id) =>{
+        window.localStorage.setItem('idtipomonitor', id);
+      }
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
