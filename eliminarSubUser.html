@@ -24,13 +24,28 @@
 
                           <div class="card-body">
                             <h5 class="card-title">${item.nombre}</h5>
-                            <a href="principal.html"  id = "${item.id_usuario}" class="btn btn-primary">Eliminar</a>
+                            <a href="principal.html"  id = "${item.id_usuario}" onclick="eliminarSub(this.id)" class="btn btn-primary">Eliminar</a>
                           </div></div>
                             `
                         user.innerHTML = inner
                         users.append(user)
                         })
                     })
+
+                 const eliminarSub = (id) =>{
+                   console.log(id)
+                  fetch('http://localhost:3000/api/user/deleteSub/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: id
+                        })
+
+                    } )
+
+                 }
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
