@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reporte3.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="global">
+        <div class="title">Comision</div>
+
+        <div class="report">
+
+                <div class="card3">Comision de acuerdo al total de reproducciones</div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+
+            suscripciones = document.querySelector('.card3')
+            fetch('http://localhost:3000/api/artist/getComision/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario
+                        })
+
+                    } ).then(response => response.json()).then(response =>{
+                        console.log(response)
+                        song = document.createElement('div')
+                        var inner = `
+                        <div class="card" style="width: 18rem;">
+
+                          <div class="card-body">
+                            <h5 class="card-title">Nombre: ${response[0].nombre_artista}</h5>
+                            <p class="card-text">Cantidad de reproducciones: ${response[0].count}</p>
+                            <p class="card-text">Comision: ${response[0].comision}</p>
+
+                          </div></div>
+                            `
+                        song.innerHTML = inner
+                        suscripciones.append(song)
+                    })
+
+
+    </script>
+</body>
+</html>

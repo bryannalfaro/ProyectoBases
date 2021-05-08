@@ -87,6 +87,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0 1" type="submit" onclick="out()">Log out</button>
             <a href="makePremium.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id="prem">Hazte premium</button></a>
             <a href="cambiar_rol.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id='man'>Hazte manager o artista</button></a>
+            <a href="comisionArtista.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id='comision'>Ver comisiones</button></a>
           </div>
 
 
@@ -190,8 +191,10 @@
                         console.log(response)
                         if(response.length===0){
                             document.getElementById('art').style.display='none'
+                            document.getElementById('comision').style.display='none'
                         }else if(response.length!=0){
                           document.getElementById('man').style.display='none'
+
                         }
                     })
                     fetch('http://localhost:3000/api/user/probeM/', {
@@ -251,6 +254,8 @@
 
                     })
           }
+
+          window.localStorage.getItem("user")
 
       </script>
     </body>
