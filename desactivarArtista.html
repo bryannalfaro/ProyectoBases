@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Desactivar artistas</title>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="modificar_artista.css">
-    </head>
-    <body>
-        <div class="artistas">
+<head>
+    <title>Desactivar artistas</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="modificar_artista.css">
+</head>
+
+<body>
+    <div class="artistas">
 
 
-        </div>
-        <script>
-            const artistas = document.querySelector('.artistas')
-            fetch('http://localhost:3000/api/artist/').then(response => response.json()).then(response =>{
-                response.map((item)=>{
-                    console.log(item.nombre_artista)
-                    artista = document.createElement('div')
-                    var inner =  `
+    </div>
+    <script>
+        const artistas = document.querySelector('.artistas')
+        fetch('http://localhost:3000/api/artist/').then(response => response.json()).then(response => {
+            response.map((item) => {
+                console.log(item.nombre_artista)
+                artista = document.createElement('div')
+                var inner = `
                     <div class="artista c1">
                 <div class="container">
                     <img src="10.png" alt="cage_the_elephant">
@@ -31,13 +33,30 @@
                 <div class="details2">
                     <p>${item.descripcion}</p>
                 </div>
-                <a id = ${item.id_artista} href="principal.html" style="margin: 0 30px 20px 250px" class="boton">Desactivar</a>
-                    `
-                    artista.innerHTML = inner
-                    artistas.append(artista)
 
-                })
+                <a id= ${item.id_usuario} href="desactivarArtista.html" style="margin: 0 30px 25px 250px" class="boton" onclick="deleteArtistSub(this.id)">Desactivar</a>
+            </div>    
+                `
+                artista.innerHTML = inner
+                artistas.append(artista)
+
             })
-        </script>
-    </body>
+        })
+
+        function deleteArtistSub(id) {
+            console.log(id);
+            fetch('http://localhost:3000/api/artist/del/ ', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id_usuario: id,
+                })
+
+            })
+        }
+    </script>
+</body>
+
 </html>
