@@ -49,6 +49,16 @@
                             location.href="principal.html"
                             window.localStorage.setItem("user", JSON.stringify(response));
                             console.log(JSON.parse(window.localStorage.getItem("user")));
+                            fetch('http://localhost:3000/api/user/updateLogin/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario
+                        })
+
+                    } )
                             console.log(response)
                         }
 

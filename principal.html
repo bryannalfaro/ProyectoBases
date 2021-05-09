@@ -146,9 +146,21 @@
 
         //Al hacer log out
         function out(){
+          fetch('http://localhost:3000/api/user/updateLoginOut/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario
+                        })
+
+                    } )
           window.localStorage.clear()
           location.href="index.html"
         }
+
+
         //Guardar en local el valor seleccionado del dropdown en search
         function select(){
           console.log(document.getElementById("inlineFormCustomSelect").value)
@@ -233,6 +245,9 @@
                         }
                     })
 
+
+
+
                     //comprueba que tareas puede hacer el monitor
         function comprobarTareaMonitor(){
           console.log(document.querySelectorAll('a.option').forEach(el => el.style.display='none'))
@@ -255,7 +270,7 @@
                     })
           }
 
-          window.localStorage.getItem("user")
+
 
       </script>
     </body>
