@@ -5,8 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="modificar_cancion.css">
 </head>
 <body>
+    <div class="canciones"></div>
+    <script>
+        canciones = document.querySelector('.canciones')
+        fetch('http://localhost:3000/api/monitores/bitacora').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    horas = item.hora.split('T')
+                    fechas = item.fecha.split('T')
+                    cancion = document.createElement('div')
+                    var inner =  `
+                    <div class="cancion c1">
+                <div class="details" >
+                    <h3>Tipo de operacion: ${item.tipo_operacion}</h3>
+                    <h1>Fecha: ${fechas[0]}</h1>
 
+                </div>
+                <div class="details2">
+                    <p>Hora: ${horas[1]}</p>
+                    <p>Realizado por: ${item.nombre}</p>
+                </div>
+
+                    `
+                    cancion.innerHTML = inner
+                    canciones.append(cancion)
+
+                })
+            })
+    </script>
 </body>
 </html>
