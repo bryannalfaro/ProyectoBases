@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+html,body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin: 0;
+}
+
+.report{
+    display: flex;
+
+    width:100%;
+    height:100%;
+    font-family: 'Ubuntu';
+    overflow: scroll;
+    background-color: #14161e;
+    color: white;
+
+}
+
+
+
+
+.title{
+    text-align:center;
+    font-family:'Ubuntu',sans-serif;
+    font-size: 300%;
+}
+
+.global{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card7{
+    width: 100%;
+    overflow: scroll;
+}
+
+.input {
+    margin: 0px 0 20px 25px;
+    width: 180px;
+    font-size: 12;
+    padding: 5px;
+    color: grey;
+    background-color: azure;
+    border-radius: 5px;
+    position: absolute;
+}
+.input2 {
+    margin: -55px 25px;
+    width: 180px;
+    font-size: 12;
+    padding: 5px;
+    color: grey;
+    background-color: azure;
+    border-radius: 5px;
+    position: absolute;
+}
+.boton {
+    margin: 15px 0px 0px 150px;
+    background-color: transparent;
+    font-size: 12;
+    padding: 5px;
+    width: 80px;
+    height: 30px;
+    border-radius: 15px;
+    color: white;
+    border-color: white;
+    font-family: "Audiowide", sans-serif;
+    position: absolute;
+}
+.container{
+    padding: 10px;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    margin: 20px 0 0 35px;
+    border: none;
+    box-shadow: inset 0 0 8px gray;
+    border-radius: 10px;
+    top: 370px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.label{
+    display: block; 
+    position: relative; 
+    bottom: 3px; 
+    width:fit-content; 
+    margin: 15px 20px;
+    font-size: 15px;
+    color:white;
+    font-family: "Audiowide", sans-serif;
+}
+.label2{
+    display: block; 
+    position: relative; 
+    bottom: 3px; 
+    width:fit-content; 
+    left: 5px; 
+    margin: 70px 20px;
+    font-size: 15px;
+    color:white;
+    font-family: "Audiowide", sans-serif;
+}

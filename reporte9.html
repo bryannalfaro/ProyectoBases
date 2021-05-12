@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reporte7.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="global">
+        <div class="title">Reportes</div>
+
+        <div class="report">
+
+                <div class="card9">Total de reproducciones por género para un rango de fechas</div>
+        </div>
+
+    </div>
+
+    <script>
+
+            albumes = document.querySelector('.card9')
+        fetch('http://localhost:3000/api/report/9').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.genero_des)
+                    console.log(item.count1)
+                    album = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Género: ${item.genero_des}</div>
+                    <div>Cantidad de reproducciones: ${item.count1}</div>
+                    <br/>
+                    `
+                    album.innerHTML = inner
+                    albumes.append(album)
+
+                })
+            })
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reporte7.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="global">
+        <div class="title">Reportes</div>
+
+        <div class="report">
+                <div class="card9">Total de reproducciones por género para un rango de fechas</div>
+                    <div class="container">
+                    <label class="label">
+                        Fecha inicial
+                    </label>
+                    <input class="input" type="date" id='f1' />
+                    <label class="label2">
+                        Fecha final
+                    </label>
+                    <input class="input2" type="date" id='f2' />
+                    <a href="#" class="boton" onclick="submit()">Ingresar</a>
+                </div>
+        </div>
+
+    </div>
+
+    <script>
+        
+        function submit(){
+            var date1 = document.getElementById('f1').value
+            var date2 =  document.getElementById('f2').value
+        
+        console.log(date1)
+        console.log(date2)
+
+        albumes = document.querySelector('.card9')
+        fetch('http://localhost:3000/api/postReport/9', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fecha1: date1,
+                fecha2: date2, 
+                
+            })
+            
+        }).then(response => response.json()).then(response => {
+            response.map((item) => {
+                console.log(item.genero_des)
+                console.log(item.count1)
+                album = document.createElement('div')
+                var inner = `
+                <br/>
+                    <div>Género: ${item.genero_des}</div>
+                    <div>Cantidad de reproducciones: ${item.count1}</div>
+                <br/>
+                `
+                album.innerHTML = inner
+                albumes.append(album)
+            })
+        })
+
+    }
+
+    </script>
+</body>
+</html> 

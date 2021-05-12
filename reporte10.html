@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reporte7.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="global">
+        <div class="title">Reportes</div>
+
+        <div class="report">
+                <div class="card10">Las N canciones con más reproducciones para un artista</div>
+                    <div class="container">
+                    <label class="label">
+                        Nombre artista
+                    </label>
+                    <input class="input" type="text" id='na1' />
+                    <label class="label2">
+                        Cantidad de canciones
+                    </label>
+                    <input class="input2" type="number" id='cc2' />
+                    <a href="#" class="boton" onclick="submit()">Ingresar</a>
+                </div>
+        </div>
+
+    </div>
+
+    <script>
+        
+        function submit(){
+            var nombre_artista = document.getElementById('na1').value
+            var num_canciones =  document.getElementById('cc2').value
+        
+        console.log(nombre_artista)
+        console.log(num_canciones)
+
+        albumes = document.querySelector('.card10')
+        fetch('http://localhost:3000/api/postReport/10', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombre: nombre_artista,
+                cantidad: num_canciones,  
+            })
+            
+        }).then(response => response.json()).then(response => {
+            response.map((item) => {
+                console.log(item.r4)
+                album = document.createElement('div')
+                var inner = `
+                <br/>
+                    <div>Artista: ${item.nombreartista}</div>
+                    <div>Canción: ${item.nombrecancion}</div>
+                    <div>Cantidad de reproducciones: ${item.count1}</div>
+                <br/>
+                `
+                album.innerHTML = inner
+                albumes.append(album)
+            })
+        })
+
+    }
+
+    </script>
+</body>
+</html> 
