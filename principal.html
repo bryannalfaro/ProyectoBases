@@ -88,6 +88,7 @@
             <a href="makePremium.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id="prem">Hazte premium</button></a>
             <a href="cambiar_rol.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id='man'>Hazte manager o artista</button></a>
             <a href="comisionArtista.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id='comision'>Ver comisiones</button></a>
+            <a href="simulacion.html"><button class="btn btn-outline-success my-2 my-sm-0 2" type="submit" id='simul_adm'>Simulacion tracks</button></a>
           </div>
 
 
@@ -188,6 +189,7 @@
         }else if(val2==='No'| val2===null){
           console.log("no prem")
           document.getElementById('adm').style.display='none';
+          document.getElementById('simul_adm').style.display='none';
         }
 
         fetch('http://localhost:3000/api/user/probe/', {

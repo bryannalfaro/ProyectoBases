@@ -1,0 +1,119 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reporte7.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="global">
+        <div class="title">Reportes</div>
+
+        <div class="report">
+
+                <div class="card9">Total de reproducciones por género para un rango de fechas</div>
+        </div>
+
+    </div>
+
+    <script>
+
+            albumes = document.querySelector('.card9')
+        fetch('http://localhost:3000/api/report/9').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item.genero_des)
+                    console.log(item.count1)
+                    album = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Género: ${item.genero_des}</div>
+                    <div>Cantidad de reproducciones: ${item.count1}</div>
+                    <br/>
+                    `
+                    album.innerHTML = inner
+                    albumes.append(album)
+
+                })
+            })
+    </script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reporte7.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="global">
+        <div class="title">Simulacion</div>
+
+        <div class="report">
+                <div class="card9">Simulacion de creacion y reproduccion</div>
+                    <div class="container">
+                    <label class="label">
+                        Fecha inicial
+                    </label>
+                    <input class="input" type="date" id='f1' />
+                    <label class="label2">
+                        Cantidad de tracks
+                    </label>
+                    <input class="input2" type="text" id='f2' />
+                    <label class="label2">
+                        Cantidad de reproducciones
+                    </label>
+                    <input class="input2" type="text" id='f3' />
+                    <a href="#" class="boton" onclick="submit()">Simular</a>
+                </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        function submit(){
+            var date1 = document.getElementById('f1').value
+            var cantidad =  document.getElementById('f2').value
+            var reproducciones =  document.getElementById('f3').value
+            var songs =[]
+            var random = 0
+
+        console.log(date1)
+        fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response => {
+                        console.log(response)
+                        response.map((item)=>{
+                            songs.push(item.id_cancion)
+                        })
+
+                    }).then(response =>{
+                        for(var i =0; i<reproducciones;i++){
+            random = Math.floor(Math.random() * songs.length);
+            fetch('http://localhost:3000/api/stream/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id_cancion: songs[random],
+                            id_usuario:JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+                            fecha:date1
+                        })
+
+                    } ).then(response => response.json()).then(response => {
+                        console.log(response)
+
+                    })
+        }
+                    })
+
+
+
+    }
+
+    </script>
+</body>
+</html>
