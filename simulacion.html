@@ -91,7 +91,7 @@
             var albumR = 0
 
         fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response => {
-                        console.log(response)
+                        //console.log(response)
                         response.map((item)=>{
                             songs.push(item.id_cancion)
                         })
@@ -102,7 +102,7 @@
 
                             //Jalar ids de artista para seleccionar random
                         fetch('http://localhost:3000/api/artist/').then(response => response.json()).then(response => {
-                        console.log(response)
+                        //console.log(response)
                         response.map((item)=>{
                             artists.push(item.id_artista)
                         })
@@ -120,30 +120,30 @@
                             })
 
                         } ).then(response => response.json()).then(response =>{
-                            console.log(response)
+                            //console.log(response)
                             response.map((item)=>{
-                                console.log('itemalbum',item.id_album)
+                                //console.log('itemalbum',item.id_album)
                                 albums.push(item.id_album)
                             })
                             }).then(response =>{
                                 albumR = Math.floor(Math.random() * albums.length)
-                                console.log("Album random:",albumR)
+                                //console.log("Album random:",albumR)
                                 }).then(response =>{
                                     //AQUI TODO
                                     //Jalo genero
                         fetch('http://localhost:3000/api/genres/').then(response => response.json()).then(response => {
-                        console.log(response)
+                        //console.log(response)
                         response.map((item)=>{
-                            console.log('itemgenero',item.id_genero)
+                            //console.log('itemgenero',item.id_genero)
                             genres.push(item.id_genero)
                         })
                     }).then(response =>{
                         generoR = Math.floor(Math.random() * genres.length)
-                        console.log("genero random:",generoR)
+                        //console.log("genero random:",generoR)
                         }).then(response=>{
 
-                        console.log('se va a agregar genero id',genres[generoR])
-                        console.log('se va a agregar album id',albums[albumR])
+                        //console.log('se va a agregar genero id',genres[generoR])
+                       // console.log('se va a agregar album id',albums[albumR])
                         maximo++;
                         //crear canciones
                         fetch('http://localhost:3000/api/cancion/post', {
@@ -169,7 +169,7 @@
                     ).then(response=>{
                             //Reproduccion de canciones aleatorias
                         fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response => {
-                        console.log(response)
+                        //console.log(response)
                         response.map((item)=>{
                             songs.push(item.id_cancion)
                         })
@@ -189,7 +189,7 @@
                                     })
 
                                 } ).then(response => response.json()).then(response => {
-                                    console.log(response)
+                                   // console.log(response)
 
                                 })
                          }
