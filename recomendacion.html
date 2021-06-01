@@ -7,6 +7,73 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="global">
+        <div class="title">Recomendaciones</div>
 
+        <div class="report">
+            <div class="card1">Canciones que te pueden gustar</div>
+        </div>
+        <br>
+        <div class="report">
+            <div class="card2">Artistas que te pueden gustar</div>
+        </div>
+        <br>
+        <div class="report">
+            <div class="card3">Generos que te pueden gustar</div>
+        </div>
+    </div>
+
+    <script>
+        canciones = document.querySelector('.card1')
+        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item._id)
+                    cancion = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Cancion: ${item._id}</div>
+                    <div>Reproducciones: ${item.count}</div>
+                    <br/>
+                    `
+                    cancion.innerHTML = inner
+                    canciones.append(cancion)
+
+                })
+            })
+
+        artistas = document.querySelector('.card2')
+        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item._id)
+                    artista = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Cancion: ${item._id}</div>
+                    <div>Reproducciones: ${item.count}</div>
+                    <br/>
+                    `
+                    artista.innerHTML = inner
+                    artistas.append(artista)
+
+                })
+            })
+
+        generos = document.querySelector('.card3')
+        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response =>{
+                response.map((item)=>{
+                    console.log(item._id)
+                    genero = document.createElement('div')
+                    var inner =  `
+                    <br/>
+                    <div>Cancion: ${item._id}</div>
+                    <div>Reproducciones: ${item.count}</div>
+                    <br/>
+                    `
+                    genero.innerHTML = inner
+                    generos.append(genero)
+
+                })
+            })
+    </script>
 </body>
 </html>
