@@ -6,18 +6,24 @@ html,body{
     margin: 0;
 }
 
+.general{
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .report{
     display: flex;
-
+    flex-direction: column;
     width:100%;
     height:100%;
     font-family: 'Ubuntu';
-    overflow: scroll;
     background-color: #14161e;
     color: white;
+    padding-left: 5vh;
 
 }
-
 
 .title{
     text-align:center;
@@ -31,7 +37,15 @@ html,body{
     display: flex;
     flex-direction: column;
 }
-.card1{
-    width: 100%;
-    overflow: scroll;
+
+.t{
+    font-size: 40px;
+}
+
+.y{
+    font-size: 20px;
+}
+
+p, h5{
+    color: black;
 }

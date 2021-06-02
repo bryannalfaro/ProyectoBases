@@ -1,76 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="recomendaciones.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recomendaciones</title>
 </head>
+
 <body>
     <div class="global">
         <div class="title">Recomendaciones</div>
 
         <div class="report">
-            <div class="card1">Canciones que te pueden gustar</div>
+            <div class="card1 t">Canciones que te pueden gustar</div>
+            <H1 id="titlemain"></H1>
+            <div class="general"></div>
         </div>
         <br>
         <div class="report">
-            <div class="card2">Artistas que te pueden gustar</div>
+            <div class="card2 t">Artistas que te pueden gustar</div>
         </div>
         <br>
         <div class="report">
-            <div class="card3">Generos que te pueden gustar</div>
+            <div class="card3 t">Generos que te pueden gustar</div>
         </div>
     </div>
 
     <script>
-        canciones = document.querySelector('.card1')
-        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response =>{
-                response.map((item)=>{
-                    cancion = document.createElement('div')
-                    var inner =  `
-                    <br/>
-                    <div>Cancion: ${item._id}</div>
-                    <div>Reproducciones: ${item.count}</div>
-                    <br/>
-                    `
-                    cancion.innerHTML = inner
-                    canciones.append(cancion)
 
+        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response => {
+            response.map((item) => {
+                const songs = document.querySelector('.general')
+                fetch('http://localhost:3000/api/cancion/getsong', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre: item._id
+                    })
+
+                }).then(response => response.json()).then(response => {
+                    song = document.createElement('div')
+                    var inner = `
+                    <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="logo.png" alt="Card image cap">
+
+                      <div class="card-body">
+                        <h5 class="card-title">${response[0].nombre}</h5>
+                        <p class="card-text">${response[0].duracion}</p>
+                        <p class="card-text">${response[0].artista}</p>
+                        <p class="card-text">${response[0].album}</p>
+                        <p class="card-text">Reproducciones: ${item.count}</p>
+                        <a   id = "${response[0].id_cancion}" class="btn btn-primary" onClick ="hey(this.id)">Escuchar</a>
+                      </div></div>
+                        `
+                    song.innerHTML = inner
+                    songs.append(song)
                 })
             })
+        })
 
         artistas = document.querySelector('.card2')
-        fetch('http://localhost:3000/api/user/streams/recommendations/2').then(response => response.json()).then(response =>{
-                response.map((item)=>{
-                    artista = document.createElement('div')
-                    var inner =  `
+        fetch('http://localhost:3000/api/user/streams/recommendations/2').then(response => response.json()).then(response => {
+            response.map((item) => {
+                artista = document.createElement('div')
+                var inner = `
                     <br/>
-                    <div>Cancion: ${item._id}</div>
-                    <div>Reproducciones: ${item.count}</div>
+                    <div class="y">Artista: ${item._id}</div>
+                    <div class="y">Reproducciones: ${item.count}</div>
                     <br/>
                     `
-                    artista.innerHTML = inner
-                    artistas.append(artista)
+                artista.innerHTML = inner
+                artistas.append(artista)
 
-                })
             })
+        })
 
         generos = document.querySelector('.card3')
-        fetch('http://localhost:3000/api/user/streams/recommendations/3').then(response => response.json()).then(response =>{
-                response.map((item)=>{
-                    genero = document.createElement('div')
-                    var inner =  `
+        fetch('http://localhost:3000/api/user/streams/recommendations/3').then(response => response.json()).then(response => {
+            response.map((item) => {
+                genero = document.createElement('div')
+                var inner = `
                     <br/>
-                    <div>Cancion: ${item._id}</div>
-                    <div>Reproducciones: ${item.count}</div>
+                    <div class="y">Genero: ${item._id}</div>
+                    <div class="y">Reproducciones: ${item.count}</div>
                     <br/>
                     `
-                    genero.innerHTML = inner
-                    generos.append(genero)
+                genero.innerHTML = inner
+                generos.append(genero)
+
+            })
+        })
+
+        var f = new Date();
+        if (f.getMonth() < 10) {
+            var fecha = f.getFullYear() + "-" + "0" + (f.getMonth() + 1) + "-" + f.getDate();
+        } else {
+            var fecha = f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + f.getDate();
+        }
+
+        const hey = (item) => {
+            window.localStorage.setItem('idval', item);
+            var val = JSON.parse(window.localStorage.getItem("user"))[0].premium
+            if (val === 'No') {
+                console.log("entree")
+                fetch('http://localhost:3000/api/user/streams/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+                        fecha: fecha
+                    })
+
+                }).then(response => response.json()).then(response => {
+                    console.log('R', response[0].count)
+                    if (response[0].count >= '3') {
+
+                        alert('Ya no puedes escuchar mas canciones')
+                    } else {
+                        fetch('http://localhost:3000/api/stream/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id_cancion: window.localStorage.getItem('idval'),
+                                id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+                                fecha: fecha
+                            })
+
+                        }).then(response => response.json()).then(response => {
+                            console.log(response)
+
+                        })
+                        location.href = 'escuchar_cancion.html'
+                    }
 
                 })
-            })
+            } else {
+                fetch('http://localhost:3000/api/stream/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id_cancion: window.localStorage.getItem('idval'),
+                        id_usuario: JSON.parse(window.localStorage.getItem("user"))[0].id_usuario,
+                        fecha: fecha
+                    })
+
+                }).then(response => response.json()).then(response => {
+                    console.log(response)
+
+                })
+                location.href = 'escuchar_cancion.html'
+            }
+        }
+
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiR
 </body>
+
 </html>
