@@ -27,7 +27,6 @@
         canciones = document.querySelector('.card1')
         fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response =>{
                 response.map((item)=>{
-                    console.log(item._id)
                     cancion = document.createElement('div')
                     var inner =  `
                     <br/>
@@ -42,9 +41,8 @@
             })
 
         artistas = document.querySelector('.card2')
-        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response =>{
+        fetch('http://localhost:3000/api/user/streams/recommendations/2').then(response => response.json()).then(response =>{
                 response.map((item)=>{
-                    console.log(item._id)
                     artista = document.createElement('div')
                     var inner =  `
                     <br/>
@@ -59,9 +57,8 @@
             })
 
         generos = document.querySelector('.card3')
-        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response =>{
+        fetch('http://localhost:3000/api/user/streams/recommendations/3').then(response => response.json()).then(response =>{
                 response.map((item)=>{
-                    console.log(item._id)
                     genero = document.createElement('div')
                     var inner =  `
                     <br/>
