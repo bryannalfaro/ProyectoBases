@@ -31,10 +31,10 @@
 
     <script>
 
-        fetch('http://localhost:3000/api/user/streams/recommendations/1').then(response => response.json()).then(response => {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/user/streams/recommendations/1').then(response => response.json()).then(response => {
             response.map((item) => {
                 const songs = document.querySelector('.general')
-                fetch('http://localhost:3000/api/cancion/getsong', {
+                fetch('http://localhoshttps://cryptic-sea-85662.herokuapp.com/api/cancion/getsong', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -65,7 +65,7 @@
         })
 
         artistas = document.querySelector('.card2')
-        fetch('http://localhost:3000/api/user/streams/recommendations/2').then(response => response.json()).then(response => {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/user/streams/recommendations/2').then(response => response.json()).then(response => {
             response.map((item) => {
                 artista = document.createElement('div')
                 var inner = `
@@ -81,7 +81,7 @@
         })
 
         generos = document.querySelector('.card3')
-        fetch('http://localhost:3000/api/user/streams/recommendations/3').then(response => response.json()).then(response => {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/user/streams/recommendations/3').then(response => response.json()).then(response => {
             response.map((item) => {
                 genero = document.createElement('div')
                 var inner = `
@@ -108,7 +108,7 @@
             var val = JSON.parse(window.localStorage.getItem("user"))[0].premium
             if (val === 'No') {
                 console.log("entree")
-                fetch('http://localhost:3000/api/user/streams/', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/user/streams/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -124,7 +124,7 @@
 
                         alert('Ya no puedes escuchar mas canciones')
                     } else {
-                        fetch('http://localhost:3000/api/stream/', {
+                        fetch('https://cryptic-sea-85662.herokuapp.com/api/stream/', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -144,7 +144,7 @@
 
                 })
             } else {
-                fetch('http://localhost:3000/api/stream/', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/stream/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

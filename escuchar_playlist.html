@@ -21,7 +21,7 @@
     const songs = document.querySelector('.padre')
     console.log('Cancion')
     console.log(window.localStorage.getItem('idplay'))
-        fetch('http://localhost:3000/api/playlist/get/search', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/playlist/get/search', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

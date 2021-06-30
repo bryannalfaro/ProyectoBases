@@ -29,25 +29,25 @@
     </div>
 
     <script>
-        
+
         function submit(){
             var nombre_artista = document.getElementById('na1').value
             var num_canciones =  document.getElementById('cc2').value
-        
+
         console.log(nombre_artista)
         console.log(num_canciones)
 
         albumes = document.querySelector('.card10')
-        fetch('http://localhost:3000/api/postReport/10', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/postReport/10', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 nombre: nombre_artista,
-                cantidad: num_canciones,  
+                cantidad: num_canciones,
             })
-            
+
         }).then(response => response.json()).then(response => {
             response.map((item) => {
                 console.log(item.r4)
@@ -68,4 +68,4 @@
 
     </script>
 </body>
-</html> 
+</html>

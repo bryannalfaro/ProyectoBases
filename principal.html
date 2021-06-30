@@ -148,7 +148,7 @@
 
         //Al hacer log out
         function out(){
-          fetch('http://localhost:3000/api/user/updateLoginOut/', {
+          fetch('https://cryptic-sea-85662.herokuapp.com/api/user/updateLoginOut/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -193,7 +193,7 @@
           document.getElementById('simul_adm').style.display='none';
         }
 
-        fetch('http://localhost:3000/api/user/probe/', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/user/probe/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -212,7 +212,7 @@
 
                         }
                     })
-                    fetch('http://localhost:3000/api/user/probeM/', {
+                    fetch('https://cryptic-sea-85662.herokuapp.com/api/user/probeM/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -229,7 +229,7 @@
                           document.getElementById('man').style.display='none'
                         }
                     })
-                    fetch('http://localhost:3000/api/monitores/probeMonitor/', {
+                    fetch('https://cryptic-sea-85662.herokuapp.com/api/monitores/probeMonitor/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -254,7 +254,7 @@
                     //comprueba que tareas puede hacer el monitor
         function comprobarTareaMonitor(){
           console.log(document.querySelectorAll('a.option').forEach(el => el.style.display='none'))
-          fetch('http://localhost:3000/api/monitores/getOptionsMonitor/', {
+          fetch('https://cryptic-sea-85662.herokuapp.com/api/monitores/getOptionsMonitor/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

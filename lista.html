@@ -36,7 +36,7 @@
       var val = JSON.parse(window.localStorage.getItem("user"))[0].premium
       if (val === 'No') {
         console.log("entree")
-        fetch('http://localhost:3000/api/user/streams/', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/user/streams/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@
 
             alert('Ya no puedes escuchar mas canciones')
           } else {
-            fetch('http://localhost:3000/api/stream/', {
+            fetch('https://cryptic-sea-85662.herokuapp.com/api/stream/', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@
 
         })
       } else {
-        fetch('http://localhost:3000/api/stream/', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/stream/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -96,7 +96,7 @@
 
       console.log('Cancion')
       document.getElementById('titlemain').textContent = ('Canciones')
-      fetch('http://localhost:3000/api/cancion/getsong', {
+      fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/getsong', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -129,7 +129,7 @@
     } else if (window.localStorage.getItem('seleccion') === 'Artista') {
       console.log('Artista')
       document.getElementById('titlemain').textContent = ('Canciones del artista ' + `${(window.localStorage.getItem('searching'))}`)
-      fetch('http://localhost:3000/api/artist/getartist', {
+      fetch('https://cryptic-sea-85662.herokuapp.com/api/artist/getartist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -164,7 +164,7 @@
     } else if (window.localStorage.getItem('seleccion') === 'Album') {
       console.log('Album')
       document.getElementById('titlemain').textContent = ('Canciones del album ' + `${(window.localStorage.getItem('searching'))}`)
-      fetch('http://localhost:3000/api/album/getalbum', {
+      fetch('https://cryptic-sea-85662.herokuapp.com/api/album/getalbum', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -200,7 +200,7 @@
     else if (window.localStorage.getItem('seleccion') === 'Genero') {
       console.log('Genero')
       document.getElementById('titlemain').textContent = ('Canciones del genero ' + `${(window.localStorage.getItem('searching'))}`)
-      fetch('http://localhost:3000/api/genero/name', {
+      fetch('https://cryptic-sea-85662.herokuapp.com/api/genero/name', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

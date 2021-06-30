@@ -21,7 +21,7 @@
 
 
             albumes = document.querySelector('.card6')
-        fetch('http://localhost:3000/api/report/6').then(response => response.json()).then(response =>{
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/report/6').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre)
                     album = document.createElement('div')

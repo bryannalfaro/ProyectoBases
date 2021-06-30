@@ -12,7 +12,7 @@
     <div class="users"></div>
     <script>
         const users = document.querySelector('.users')
-        fetch('http://localhost:3000/api/user/withSub', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/user/withSub', {
 
                     } ).then(response => response.json()).then(response => {
                         console.log(response)
@@ -34,7 +34,7 @@
 
                  const eliminarSub = (id) =>{
                    console.log(id)
-                  fetch('http://localhost:3000/api/user/deleteSub/', {
+                  fetch('https://cryptic-sea-85662.herokuapp.com/api/user/deleteSub/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

@@ -16,7 +16,7 @@
     </div>
     <script>
         const artistas = document.querySelector('.artistas')
-        fetch('http://localhost:3000/api/artist/').then(response => response.json()).then(response => {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/artist/').then(response => response.json()).then(response => {
             response.map((item) => {
                 console.log(item.nombre_artista)
                 artista = document.createElement('div')
@@ -35,7 +35,7 @@
                 </div>
 
                 <a id= ${item.id_usuario} href="desactivarArtista.html" style="margin: 0 30px 25px 250px" class="boton" onclick="deleteArtistSub(this.id)">Desactivar</a>
-            </div>    
+            </div>
                 `
                 artista.innerHTML = inner
                 artistas.append(artista)
@@ -45,7 +45,7 @@
 
         function deleteArtistSub(id) {
             console.log(id);
-            fetch('http://localhost:3000/api/artist/del/ ', {
+            fetch('http://lhttps://cryptic-sea-85662.herokuapp.com/api/artist/del/ ', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

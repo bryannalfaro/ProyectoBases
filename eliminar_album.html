@@ -14,7 +14,7 @@
         </div>
         <script>
             const albums = document.querySelector('.albums')
-            fetch('http://localhost:3000/api/album/').then(response => response.json()).then(response =>{
+            fetch('https://cryptic-sea-85662.herokuapp.com/api/album/').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre)
                     album = document.createElement('div')
@@ -34,11 +34,11 @@
 
                 })
             })
-            
+
             function deleteAlbum(item){
                 console.log(item)
                 window.localStorage.setItem('idval2', item);
-                fetch('http://localhost:3000/api/album', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/album', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

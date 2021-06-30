@@ -14,7 +14,7 @@
         </div>
         <script>
             const canciones = document.querySelector('.canciones')
-            fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response =>{
+            fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre)
                     cancion = document.createElement('div')
@@ -39,11 +39,11 @@
 
                 })
             })
-            
+
             function deleteSong(item){
                 console.log(item)
                 window.localStorage.setItem('idval2', item);
-                fetch('http://localhost:3000/api/cancion/del', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/del', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

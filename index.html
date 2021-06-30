@@ -32,7 +32,7 @@
             console.log(nameUser)
             var contraUser = document.getElementById('input-contra').value;
             console.log(contraUser)
-            fetch('http://localhost:3000/api/user/login/', {
+            fetch('https://cryptic-sea-85662.herokuapp.com/api/user/login/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -49,7 +49,7 @@
                             location.href="principal.html"
                             window.localStorage.setItem("user", JSON.stringify(response));
                             console.log(JSON.parse(window.localStorage.getItem("user")));
-                            fetch('http://localhost:3000/api/user/updateLogin/', {
+                            fetch('https://cryptic-sea-85662.herokuapp.com/api/user/updateLogin/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

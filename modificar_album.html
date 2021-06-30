@@ -16,7 +16,7 @@
         </div>
         <script>
             const albums = document.querySelector('.artistas')
-            fetch('http://localhost:3000/api/album/').then(response => response.json()).then(response =>{
+            fetch('https://cryptic-sea-85662.herokuapp.com/api/album/').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombrealbum)
                     album = document.createElement('div')
@@ -42,7 +42,7 @@
             function modifyAlbums(id,nombre,fecha){
                 console.log(nombre)
                 console.log(fecha)
-                fetch('http://localhost:3000/api/album/', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/album/', {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'

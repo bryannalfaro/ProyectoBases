@@ -12,7 +12,7 @@
     <div class="users"></div>
     <script>
         const users = document.querySelector('.users')
-        fetch('http://localhost:3000/api/user/getAllUsersNoMonitors', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/user/getAllUsersNoMonitors', {
 
                     } ).then(response => response.json()).then(response => {
                         console.log(response)

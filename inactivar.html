@@ -19,7 +19,7 @@
 
         <script>
             const canciones = document.querySelector('.canciones')
-            fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response =>{
+            fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre)
                     cancion = document.createElement('div')
@@ -46,7 +46,7 @@
             })
             function disableSong(id){
                 console.log("entre")
-                fetch('http://localhost:3000/api/cancion/inab/', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/inab/', {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'

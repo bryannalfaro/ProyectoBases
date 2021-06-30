@@ -47,7 +47,7 @@
             console.log(inputName)
 
             if(userSelect===true){
-                fetch('http://localhost:3000/api/user/postArtist/', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/user/postArtist/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -69,7 +69,7 @@
 
             }else{
 
-                fetch('http://localhost:3000/api/user/postManager/', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/user/postManager/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

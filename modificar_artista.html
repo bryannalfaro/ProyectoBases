@@ -16,7 +16,7 @@
         </div>
         <script>
             const artistas = document.querySelector('.artistas')
-            fetch('http://localhost:3000/api/artist/').then(response => response.json()).then(response =>{
+            fetch('http://localhost:https://cryptic-sea-85662.herokuapp.com/api/artist/').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     console.log(item.nombre_artista)
                     console.log(item.descripcion)
@@ -47,7 +47,7 @@
                 console.log(nombre)
                 console.log(descripcion)
                 console.log(fans)
-                fetch('http://localhost:3000/api/artist/', {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/artist/', {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'

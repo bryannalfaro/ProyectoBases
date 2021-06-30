@@ -92,7 +92,7 @@
             var albums = []
             var albumR = 0
 
-            fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response => {
+            fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/').then(response => response.json()).then(response => {
                 //console.log(response)
                 response.map((item) => {
                     songs.push(item.id_cancion)
@@ -103,7 +103,7 @@
                 for (var j = 0; j < cantidad; j++) {
 
                     //Jalar ids de artista para seleccionar random
-                    fetch('http://localhost:3000/api/artist/').then(response => response.json()).then(response => {
+                    fetch('https://cryptic-sea-85662.herokuapp.com/api/artist/').then(response => response.json()).then(response => {
                         //console.log(response)
                         response.map((item) => {
                             artists.push(item.id_artista)
@@ -112,7 +112,7 @@
                     }).then(response => {
                         artistaR = Math.floor(Math.random() * artists.length)
                         //Jalar albums de artista
-                        fetch('http://localhost:3000/api/album/get/albumartist', {
+                        fetch('https://cryptic-sea-85662.herokuapp.com/api/album/get/albumartist', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -133,7 +133,7 @@
                         }).then(response => {
                             //AQUI TODO
                             //Jalo genero
-                            fetch('http://localhost:3000/api/genres/').then(response => response.json()).then(response => {
+                            fetch('https://cryptic-sea-85662.herokuapp.com/api/genres/').then(response => response.json()).then(response => {
                                 //console.log(response)
                                 response.map((item) => {
                                     //console.log('itemgenero',item.id_genero)
@@ -148,7 +148,7 @@
                                 // console.log('se va a agregar album id',albums[albumR])
                                 maximo++;
                                 //crear canciones
-                                fetch('http://localhost:3000/api/cancion/post', {
+                                fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/post', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'
@@ -171,7 +171,7 @@
             }
             ).then(response => {
                 //Reproduccion de canciones aleatorias
-                fetch('http://localhost:3000/api/cancion/').then(response => response.json()).then(response => {
+                fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/').then(response => response.json()).then(response => {
                     //console.log(response)
                     response.map((item) => {
                         songs.push(item.id_cancion)
@@ -180,7 +180,7 @@
                 }).then(response => {
                     for (var i = 0; i < reproducciones; i++) {
                         random = Math.floor(Math.random() * songs.length);
-                        fetch('http://localhost:3000/api/stream/', {
+                        fetch('https://cryptic-sea-85662.herokuapp.com/api/stream/', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -199,7 +199,7 @@
                     }
                 })
             }).then(response => response.json()).then(response => {
-                    fetch('http://localhost:3000/api/user/streams/', {
+                    fetch('https://cryptic-sea-85662.herokuapp.com/api/user/streams/', {
 
                     })
                 })

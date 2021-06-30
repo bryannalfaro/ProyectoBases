@@ -29,18 +29,18 @@
     </div>
 
     <script>
-        
+
         function submit(){
             var date1 = document.getElementById('f1').value
             var date2 =  document.getElementById('f2').value
             var num1 = document.getElementById('n1').value
-        
+
         console.log(date1)
         console.log(date2)
         console.log(num1)
 
         albumes = document.querySelector('.card8')
-        fetch('http://localhost:3000/api/postReport/8', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/postReport/8', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,10 +48,10 @@
             body: JSON.stringify({
                 fecha1: date1,
                 fecha2: date2,
-                cantidad: num1,  
-                
+                cantidad: num1,
+
             })
-            
+
         }).then(response => response.json()).then(response => {
             response.map((item) => {
                 console.log(item.r1)

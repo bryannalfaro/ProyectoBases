@@ -11,7 +11,7 @@
     <div class="canciones"></div>
     <script>
         canciones = document.querySelector('.canciones')
-        fetch('http://localhost:3000/api/monitores/bitacora').then(response => response.json()).then(response =>{
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/monitores/bitacora').then(response => response.json()).then(response =>{
                 response.map((item)=>{
                     horas = item.hora.split('T')
                     fechas = item.fecha.split('T')

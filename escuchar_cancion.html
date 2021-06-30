@@ -16,7 +16,7 @@
         const songs = document.querySelector('.gen')
         console.log(window.localStorage.getItem('idval'))
         const links = document.querySelector('.gen')
-        fetch('http://localhost:3000/api/cancion/link', {
+        fetch('https://cryptic-sea-85662.herokuapp.com/api/cancion/link', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
